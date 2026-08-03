@@ -1,0 +1,78 @@
+<mat-toolbar class="top-toolbar">
+
+  <span class="logo">
+    BEZOHMINDS
+  </span>
+
+  <span class="spacer"></span>
+
+
+  <button mat-icon-button>
+    <mat-icon>
+      search
+    </mat-icon>
+  </button>
+
+
+  <button 
+    mat-icon-button
+    (click)="toggleTheme()">
+
+    <mat-icon>
+      {{ darkMode ? 'light_mode' : 'dark_mode' }}
+    </mat-icon>
+
+  </button>
+
+
+  <button 
+    class="profile-btn"
+    [matMenuTriggerFor]="profile">
+
+    <div class="avatar">
+      {{ initials }}
+    </div>
+
+    
+
+  </button>
+
+</mat-toolbar>
+
+
+<mat-menu #profile="matMenu">
+
+  <div class="profile-box">
+
+    <div class="profile-circle">
+      {{ initials }}
+    </div>
+
+    <h3>
+      {{ userEmail }}
+    </h3>
+
+    <p>
+      Administrator
+    </p>
+
+  </div>
+  <button
+  mat-menu-item
+  routerLink="/theme-settings">
+
+  Theme Settings
+
+</button>
+
+
+
+  <button 
+    mat-menu-item 
+    (click)="logout()">
+
+    Logout
+
+  </button>
+
+</mat-menu>

@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+.main-layout {
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  height: calc(100vh - 44px);
+}
+
+.right-section {
+  flex: 1;
+  background: #f5f7fa;
+  transition: 0.3s;
+}
+
+.page-title{
+    height:50px;
+    display:flex;
+    align-items:center;
+    padding-left:20px;
+    font-size:22px;
+    font-weight:700;
+
+    background:var(--child-toolbar-color,#ffffff);
+    color:#111827;
+    border-bottom:1px solid #e5e7eb;
+}
+.content {
+  padding: 25px;
+  height: calc(100% - 50px);
+  overflow: auto;
+}

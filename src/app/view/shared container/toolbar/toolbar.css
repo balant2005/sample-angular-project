@@ -1,0 +1,54 @@
+.top-toolbar {
+  height: 44px;
+  background: var(--toolbar-color, #3949ab) !important;
+  color: white;
+  padding: 0 16px;
+}
+.logo {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.spacer {
+  flex: 1;
+}
+
+
+
+
+/* Profile */
+.profile-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.avatar,
+.profile-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: white;
+  color: #3949ab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.profile-box {
+  width: 220px;
+  text-align: center;
+  padding: 15px;
+}
+
+.profile-box h3 {
+  margin: 10px 0 5px;
+}
+.sidebar {
+  background: var(--sidebar-color, white);
+}

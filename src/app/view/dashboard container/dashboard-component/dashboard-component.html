@@ -1,0 +1,128 @@
+<h1>Dashboard</h1>
+
+<p class="welcome">
+  Last Day
+</p>
+
+
+<div class="dashboard-container">
+
+
+  <!-- LEFT SIDE DASHBOARD -->
+  <div class="charts">
+
+
+    <!-- Health -->
+    <mat-card class="chart-card">
+
+      <h3>Health Status</h3>
+
+      <div class="gauge">
+        <div class="needle"></div>
+      </div>
+
+
+      <div class="health-text">
+        <span>Unhealthy</span>
+        <span>Healthy</span>
+      </div>
+
+
+      <button (click)="openPanel('health')">
+        View Status Details
+      </button>
+
+    </mat-card>
+
+
+
+    <!-- Events -->
+    <mat-card class="chart-card">
+
+      <h3>Events 106</h3>
+
+
+      <div class="chart-box">
+        <canvas
+          baseChart
+          [data]="eventsData"
+          [type]="chartType"
+          [options]="chartOptions">
+        </canvas>
+      </div>
+
+
+      <button (click)="openPanel('events')">
+        View Top Events
+      </button>
+
+    </mat-card>
+
+
+
+    <!-- Policies -->
+    <mat-card class="chart-card">
+
+      <h3>Policies 67</h3>
+
+
+      <div class="chart-box">
+        <canvas
+          baseChart
+          [data]="policyData"
+          [type]="chartType"
+          [options]="chartOptions">
+        </canvas>
+      </div>
+
+
+      <button (click)="openPanel('policies')">
+        View Top Policies
+      </button>
+
+    </mat-card>
+
+
+  </div>
+
+
+
+  <!-- RIGHT SIDE SLIDE PANEL -->
+  <div 
+    class="side-panel"
+    [class.open]="isOpen">
+
+
+    <div class="panel-header">
+
+      <h2>
+        {{ panelTitle }}
+      </h2>
+
+
+      <button 
+        class="close-btn"
+        (click)="closePanel()">
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="panel-content">
+
+      @for (item of panelContent; track item) {
+
+        <div class="detail-card">
+          {{ item }}
+        </div>
+
+      }
+
+    </div>
+
+
+  </div>
+
+
+</div>

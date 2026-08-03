@@ -1,0 +1,190 @@
+<h1 class="title">
+  Company Reports Analytics
+</h1>
+
+<p class="subtitle">
+  Performance overview of company departments and revenue
+</p>
+
+
+<!-- KPI CARDS -->
+
+<div class="stats-container">
+
+  <div class="stat-card">
+    <h3>₹12.8 Cr</h3>
+    <p>Total Revenue</p>
+  </div>
+
+
+  <div class="stat-card">
+    <h3>2,450</h3>
+    <p>Total Clients</p>
+  </div>
+
+
+  <div class="stat-card">
+    <h3>850</h3>
+    <p>Employees</p>
+  </div>
+
+
+  <div class="stat-card">
+    <h3>+18.5%</h3>
+    <p>Growth Rate</p>
+  </div>
+
+</div>
+
+
+
+<!-- CHART SECTION -->
+
+<div class="chart-section">
+
+
+  <!-- Revenue Trend -->
+
+  <div class="chart-card">
+
+    <h2>
+      Monthly Revenue Trend
+    </h2>
+
+
+    <div class="chart-box">
+
+      <canvas
+        baseChart
+        [data]="revenueData"
+        [type]="'line'"
+        [options]="lineOptions">
+      </canvas>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- Department Performance -->
+
+  <div class="chart-card">
+
+    <h2>
+      Department Performance
+    </h2>
+
+
+    <div class="chart-box">
+
+      <canvas
+        baseChart
+        [data]="departmentData"
+        [type]="'bar'"
+        [options]="barOptions">
+      </canvas>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<!-- RECENT REPORTS -->
+
+<div class="report-card">
+
+  <h2>
+    Recent Department Reports
+  </h2>
+
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Department</th>
+        <th>Manager</th>
+        <th>Status</th>
+        <th>Progress</th>
+      </tr>
+    </thead>
+
+
+    <tbody>
+
+      @for (item of reports; track item.department) {
+
+        <tr>
+
+          <td>
+            {{ item.department }}
+          </td>
+
+
+          <td>
+            {{ item.manager }}
+          </td>
+
+
+          <td>
+            {{ item.status }}
+          </td>
+
+
+          <td>
+
+            <div class="progress">
+
+              <div
+                class="progress-fill"
+                [style.width.%]="item.progress">
+              </div>
+
+            </div>
+
+            {{ item.progress }}%
+
+          </td>
+
+        </tr>
+
+      }
+
+    </tbody>
+
+  </table>
+
+</div>
+
+
+
+<!-- TOP DEPARTMENTS -->
+
+<div class="top-card">
+
+  <h2>
+    Top Performing Departments
+  </h2>
+
+
+  <div class="rank">
+    🥇 Finance - 98%
+  </div>
+
+
+  <div class="rank">
+    🥈 IT Department - 92%
+  </div>
+
+
+  <div class="rank">
+    🥉 Sales Department - 89%
+  </div>
+
+
+</div>

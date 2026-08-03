@@ -1,0 +1,128 @@
+<div class="users-container">
+
+  <div class="top-bar">
+
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="Search User..."
+        [(ngModel)]="searchText"
+        (keyup)="searchUser()">
+    </div>
+
+    <button
+      mat-raised-button
+      class="create-btn"
+      (click)="openCreateUser()">
+
+      + Create User
+
+    </button>
+
+  </div>
+
+  <h2>Total Users: {{ allUsers.length }}</h2>
+
+  <div class="table-scroll-container" #scrollContainer>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!-- S.NO -->
+      <ng-container matColumnDef="sno">
+        <th mat-header-cell *matHeaderCellDef>S.No</th>
+        <td mat-cell *matCellDef="let user; let i=index">
+          {{ i + 1 }}
+        </td>
+      </ng-container>
+
+
+      <!-- NAME -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef >
+          Name
+        </th>
+
+        <td mat-cell *matCellDef="let user">
+      {{ user.name }}
+    </td>
+
+
+      </ng-container>
+
+
+      <!-- ROLE -->
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef >
+          Role
+        </th>
+
+        <td mat-cell *matCellDef="let user">
+          {{ user.role }}
+        </td>
+      </ng-container>
+
+
+      <!-- STATUS -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef >
+          Status
+        </th>
+
+        <td mat-cell *matCellDef="let user">
+          {{ user.status }}
+        </td>
+      </ng-container>
+
+
+      <!-- ACTION -->
+      <ng-container matColumnDef="action">
+
+        <th mat-header-cell *matHeaderCellDef>
+          Action
+        </th>
+
+        <td mat-cell *matCellDef="let user">
+
+          <button
+      class="edit-btn"
+      (click)="$event.stopPropagation(); editUser(user)">
+      Edit
+    </button>
+
+          <button
+      class="delete-btn"
+      (click)="$event.stopPropagation(); deleteUser(user.id)">
+      Delete
+    </button>
+
+        </td>
+
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+
+      <tr 
+      mat-row
+      *matRowDef="
+      let row;
+      columns: displayedColumns;"
+      (click)="viewUser(row)"
+      class="user-row">
+    </tr>
+    </table>
+
+    <div class="no-data"
+         *ngIf="dataSource.filteredData.length === 0">
+      User Not Found
+    </div>
+
+  </div>
+
+  <mat-paginator
+    [pageSize]="10"
+    [pageSizeOptions]="[10]"
+    showFirstLastButtons>
+  </mat-paginator>
+
+</div>

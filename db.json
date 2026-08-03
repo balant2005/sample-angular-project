@@ -1,0 +1,77 @@
+{
+  "users": [
+    {
+      "name": "Balan",
+      "role": "Admin",
+      "status": "Active",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "name": "balan",
+      "role": "manager ",
+      "status": "Active"
+    },
+    {
+      "id": "ferqQOcRG9w",
+      "name": "ashrin",
+      "role": "ceo",
+      "status": "Active"
+    },
+    {
+      "name": "josua",
+      "role": "se",
+      "status": "Active",
+      "id": "Xg1Oe7czgxY"
+    },
+    {
+      "name": "beno",
+      "role": "test",
+      "status": "Active",
+      "id": "UFrungCq_dY"
+    },
+    {
+      "name": "surya",
+      "role": "hr",
+      "status": "Active",
+      "id": "IGfr6eGl3nU"
+    },
+    {
+      "name": "chandru",
+      "role": "testing",
+      "status": "Active",
+      "id": "v_vsGbgGmJo"
+    },
+    {
+      "name": "jaya",
+      "role": "test",
+      "status": "Active",
+      "id": "nGSHm4nRprs"
+    },
+    {
+      "name": "mari",
+      "role": "manager",
+      "status": "Active",
+      "id": "eGQwUIF-h7Y"
+    },
+    {
+      "name": "hari",
+      "role": "TL",
+      "status": "Active",
+      "id": "elOqJLBzJQs"
+    },
+    {
+      "name": "appa",
+      "role": "hr",
+      "status": "Active",
+      "id": "qHMiU5Clcmc"
+    },
+    {
+      "name": "jenith",
+      "role": "owner",
+      "status": "Active",
+      "id": "8sRuzlSL2AE"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

@@ -1,0 +1,92 @@
+<div class="details-container">
+
+  <button class="back-btn" (click)="back()">
+    ← Back
+  </button>
+
+  <div *ngIf="user; else noUser">
+
+    <!-- User Details Card -->
+
+    <div class="card">
+
+      <div class="profile">
+        {{ user.name?.charAt(0) }}
+      </div>
+
+      <h1>{{ user.name }}</h1>
+
+      <div class="info">
+
+        <div class="box">
+          <h3>ID</h3>
+          <p>{{ user.id }}</p>
+        </div>
+
+        <div class="box">
+          <h3>Role</h3>
+          <p>{{ user.role }}</p>
+        </div>
+
+        <div class="box">
+          <h3>Status</h3>
+          <p>{{ user.status }}</p>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- JSON Editor -->
+
+    <div class="json-container">
+
+      <div class="json-header">
+
+        <h3>User JSON</h3>
+
+        <div class="editor-actions">
+
+          <button type="button">
+            Import
+          </button>
+
+          <button type="button">
+            Generate
+          </button>
+
+          <button type="button">
+            Export
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- ACE EDITOR -->
+
+      <div
+        #editor
+        class="ace-editor">
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- User not found -->
+
+  <ng-template #noUser>
+
+    <div class="empty">
+
+      <h2>User Not Found</h2>
+
+    </div>
+
+  </ng-template>
+
+</div>

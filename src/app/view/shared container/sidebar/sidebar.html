@@ -1,0 +1,90 @@
+<div class="sidebar" [class.collapsed]="collapsed">
+
+  <!-- Logo -->
+  <div class="logo-section">
+
+    <img 
+      src="https://media.licdn.com/dms/image/v2/D560BAQEitrhH9r-79g/company-logo_200_200/B56ZlNdB0FKIAI-/0/1757941079747/bezohminds_logo?e=2147483647&v=beta&t=iWXFODmZSr41yB6MEsF-pDIBQ66ljvpQOqgoXIyFHx8" 
+      alt="Logo"
+      class="logo-img">
+
+    <span class="logo-text" *ngIf="!collapsed">
+      BEZOHMINDS
+    </span>
+
+  </div>
+
+
+  <!-- Toggle -->
+  <button class="toggle-btn" (click)="toggleSidebar()">
+
+    <mat-icon>
+      {{ collapsed ? 'chevron_right' : 'chevron_left' }}
+    </mat-icon>
+
+  </button>
+
+
+  <!-- Menu -->
+  <a class="menu-link"
+     routerLink="/dashboard"
+     routerLinkActive="active-link">
+
+    <mat-icon>dashboard</mat-icon>
+
+    <span *ngIf="!collapsed">
+      Dashboard
+    </span>
+
+  </a>
+
+
+  <a class="menu-link"
+     routerLink="/users"
+     routerLinkActive="active-link">
+
+    <mat-icon>group</mat-icon>
+
+    <span *ngIf="!collapsed">
+      Users
+    </span>
+
+  </a>
+
+
+  <a class="menu-link"
+     routerLink="/reports"
+     routerLinkActive="active-link">
+
+    <mat-icon>bar_chart</mat-icon>
+
+    <span *ngIf="!collapsed">
+      Reports
+    </span>
+
+  </a>
+ <a class="menu-link"
+     routerLink="/event-mapper"
+     routerLinkActive="active-link">
+
+    <mat-icon>event</mat-icon>
+
+    <span *ngIf="!collapsed">
+      Event Mapper
+    </span>
+
+  </a>
+
+  <a class="menu-link"
+     routerLink="/settings"
+     routerLinkActive="active-link">
+
+    <mat-icon>settings</mat-icon>
+
+    <span *ngIf="!collapsed">
+      Settings
+    </span>
+
+  </a>
+
+</div>

@@ -1,0 +1,27 @@
+<div class="main-layout">
+
+  <app-toolbar></app-toolbar>
+
+  <div class="container">
+
+    <app-sidebar
+      [collapsed]="sidebarCollapsed"
+      (toggle)="toggleSidebar()">
+    </app-sidebar>
+
+
+    <div class="right-section">
+
+     <div class="page-title">
+  {{ pageTitle }}
+</div>
+
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

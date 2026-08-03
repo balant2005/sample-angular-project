@@ -1,0 +1,73 @@
+<form #userForm="ngForm">
+
+  <h2>
+    {{ isEdit ? 'Update User' : 'Create User' }}
+  </h2>
+
+  <div class="form">
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>Name</mat-label>
+
+      <input
+        matInput
+        name="name"
+        [(ngModel)]="user.name"
+        required>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>Role</mat-label>
+
+      <input
+        matInput
+        name="role"
+        [(ngModel)]="user.role"
+        required>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+      <mat-label>Status</mat-label>
+
+      <mat-select
+        name="status"
+        [(ngModel)]="user.status"
+        required>
+
+        <mat-option value="Active">Active</mat-option>
+        <mat-option value="Inactive">Inactive</mat-option>
+
+      </mat-select>
+
+    </mat-form-field>
+
+  </div>
+
+  <div class="buttons">
+
+    <button
+      mat-stroked-button
+      type="button"
+      (click)="close()">
+      Cancel
+    </button>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="save()"
+      [disabled]="userForm.invalid">
+
+      {{ isEdit ? 'Update' : 'Save' }}
+
+    </button>
+
+  </div>
+
+</form>

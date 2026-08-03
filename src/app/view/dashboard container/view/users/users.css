@@ -1,0 +1,169 @@
+.top-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.search-box input{
+  width:280px;
+  height:42px;
+  border:1px solid #ddd;
+  border-radius:25px;
+  padding:0 15px;
+  font-size:14px;
+  outline:none;
+}
+
+.search-box input:focus{
+  border-color:var(--toolbar-color,#3949ab);
+  box-shadow:0 0 0 3px rgba(57,73,171,.15);
+}
+
+/* Create Button */
+.create-btn{
+  background:var(--toolbar-color,#3949ab)!important;
+  color:#fff!important;
+  height:42px;
+  padding:0 25px;
+  border-radius:25px;
+  font-weight:600;
+  box-shadow:0 4px 12px rgba(0,0,0,.18);
+}
+
+.create-btn:hover{
+  opacity:.9;
+}
+
+/* ============ TABLE SCROLL WRAPPER ============ */
+.table-scroll-container{
+  max-height:500px;   /* unga screen height-ku match pannunga, e.g. calc(100vh - 300px) */
+  overflow-y:auto;
+  overflow-x:auto;  
+  background:#fff;
+}
+
+/* Table itself - NO overflow:hidden here, it breaks sticky */
+table{
+  width:100%;
+  background:#fff;
+}
+
+/* ============ STICKY HEADER - FIXED SELECTOR ============ */
+/* .table-scroll-container th targets ANY th inside, regardless of
+   Material version (mat-header-cell OR mat-mdc-header-cell) */
+.table-scroll-container th{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:var(--toolbar-color,#3949ab);
+  color:#fff;
+  font-size:15px;
+  font-weight:700;
+  height:50px;
+}
+
+.table-scroll-container th.mat-header-cell:first-child,
+.table-scroll-container td.mat-cell:first-child {
+  color: var(--toolbar-color,#3949ab);
+  font-weight:700;
+}
+
+.table-scroll-container td.mat-cell:first-child {
+  background: rgba(57,73,171,0.06);
+}
+
+td{
+  height:55px;
+}
+
+/* Row Hover */
+.user-row{
+  cursor:pointer;
+  transition:.25s;
+}
+
+.user-row:hover{
+  background:var(--highlight-color,#f2f7ff);
+}
+
+/* Edit */
+.edit-btn{
+  background:var(--toolbar-color,#3949ab);
+  color:#fff;
+  border:none;
+  padding:7px 16px;
+  border-radius:6px;
+  margin-right:8px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.edit-btn:hover{
+  opacity:.9;
+}
+
+/* Delete */
+.delete-btn{
+  background:#e53935;
+  color:#fff;
+  border:none;
+  padding:7px 16px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.delete-btn:hover{
+  opacity:.9;
+}
+
+/* User Link */
+.user-link{
+  color:var(--toolbar-color,#3949ab);
+  font-weight:600;
+  cursor:pointer;
+}
+
+.user-link:hover{
+  text-decoration:underline;
+}
+
+/* Paginator - stays fixed outside scroll container */
+mat-paginator{
+  display:block;
+  border-top:1px solid #e0e0e0;
+}
+
+/* No Data */
+.no-data{
+  text-align:center;
+  margin-top:20px;
+  font-size:18px;
+  font-weight:600;
+  color:red;
+}
+
+/* ============ Dark Theme ============ */
+body.dark-theme table{
+  background:#1f2937;
+  color:#fff;
+}
+
+body.dark-theme .table-scroll-container th{
+  background:var(--toolbar-color,#111827);
+}
+
+body.dark-theme td{
+  color:#fff;
+}
+
+body.dark-theme .search-box input{
+  background:#374151;
+  color:#fff;
+  border-color:#4b5563;
+}
+
+body.dark-theme .search-box input::placeholder{
+  color:#d1d5db;
+}

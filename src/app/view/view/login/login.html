@@ -1,0 +1,161 @@
+<div class="login-container">
+
+  <div class="login-card">
+
+    <h1>BEZOHMINDS</h1>
+
+    @if (!isSignup) {
+      <p>Admin Portal Login</p>
+    } @else {
+      <p>Create New Account</p>
+    }
+
+
+    <!-- Email -->
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+
+      <input
+        matInput
+        type="email"
+        [(ngModel)]="email">
+
+    </mat-form-field>
+
+
+    <!-- Password -->
+    <mat-form-field appearance="outline">
+
+      <mat-label>Password</mat-label>
+
+      <input
+        matInput
+        [type]="showPassword ? 'text' : 'password'"
+        [(ngModel)]="password">
+
+
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        tabindex="-1"
+        (click)="showPassword = !showPassword">
+
+        <mat-icon>
+          {{ showPassword ? 'visibility_off' : 'visibility' }}
+        </mat-icon>
+
+      </button>
+
+    </mat-form-field>
+
+
+    <!-- Confirm Password -->
+    @if (isSignup) {
+
+      <mat-form-field appearance="outline">
+
+        <mat-label>Confirm Password</mat-label>
+
+        <input
+          matInput
+          [type]="showConfirmPassword ? 'text' : 'password'"
+          [(ngModel)]="confirmPassword">
+
+
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          tabindex="-1"
+          (click)="showConfirmPassword = !showConfirmPassword">
+
+          <mat-icon>
+            {{ showConfirmPassword ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+
+        </button>
+
+      </mat-form-field>
+
+    }
+
+
+    <!-- Login Button -->
+    @if (!isSignup) {
+
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="login()">
+
+        Login
+
+      </button>
+
+    }
+
+
+    <!-- Create Account Button -->
+    @if (isSignup) {
+
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="register()">
+
+        Create Account
+
+      </button>
+
+    }
+
+
+    <!-- Switch Login / Signup -->
+
+    @if (!isSignup) {
+
+      <p class="switch">
+
+        Don't have an account?
+
+        <span (click)="isSignup = true">
+          Create Account
+        </span>
+
+      </p>
+
+    } @else {
+
+      <p class="switch">
+
+        Already have an account?
+
+        <span (click)="isSignup = false">
+          Login
+        </span>
+
+      </p>
+
+    }
+
+
+    <!-- Google Login -->
+
+    <button
+      class="google-btn"
+      type="button"
+      (click)="googleLogin()">
+
+      <img
+        src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+        alt="Google Logo">
+
+      Continue with Google
+
+    </button>
+
+
+  </div>
+
+</div>

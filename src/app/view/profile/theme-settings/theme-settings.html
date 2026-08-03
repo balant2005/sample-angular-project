@@ -1,0 +1,165 @@
+<div class="theme-container">
+
+  <div class="theme-card">
+
+    <h2>Theme Settings</h2>
+
+    <h3>Default Themes</h3>
+
+    <div class="theme-grid">
+
+      <!-- Blue -->
+      <div
+        class="theme-box"
+        [class.selected]="selectedTheme === 'Blue'"
+        (click)="selectTheme(themes[0])">
+
+        <div class="color-row">
+          <span style="background:#3949ab"></span>
+          <span style="background:#42a5f5"></span>
+          <span style="background:#e8eaf6"></span>
+          <span style="background:#1f2937"></span>
+        </div>
+
+        <p>Blue</p>
+
+      </div>
+
+      <!-- Green -->
+      <div
+        class="theme-box"
+        [class.selected]="selectedTheme === 'Green'"
+        (click)="selectTheme(themes[1])">
+
+        <div class="color-row">
+          <span style="background:#2e7d32"></span>
+          <span style="background:#66bb6a"></span>
+          <span style="background:#e8f5e9"></span>
+          <span style="background:#1b4332"></span>
+        </div>
+
+        <p>Green</p>
+
+      </div>
+
+      <!-- Orange -->
+      <div
+        class="theme-box"
+        [class.selected]="selectedTheme === 'Orange'"
+        (click)="selectTheme(themes[2])">
+
+        <div class="color-row">
+          <span style="background:#ef6c00"></span>
+          <span style="background:#ffb74d"></span>
+          <span style="background:#fff3e0"></span>
+          <span style="background:#5d4037"></span>
+        </div>
+
+        <p>Orange</p>
+
+      </div>
+
+      <!-- Purple -->
+      <div
+        class="theme-box"
+        [class.selected]="selectedTheme === 'Purple'"
+        (click)="selectTheme(themes[3])">
+
+        <div class="color-row">
+          <span style="background:#7b1fa2"></span>
+          <span style="background:#ba68c8"></span>
+          <span style="background:#f3e5f5"></span>
+          <span style="background:#4a148c"></span>
+        </div>
+
+        <p>Purple</p>
+
+      </div>
+
+      <!-- Red -->
+      <div
+        class="theme-box"
+        [class.selected]="selectedTheme === 'Red'"
+        (click)="selectTheme(themes[4])">
+
+        <div class="color-row">
+          <span style="background:#c62828"></span>
+          <span style="background:#ef5350"></span>
+          <span style="background:#ffebee"></span>
+          <span style="background:#7f1d1d"></span>
+        </div>
+
+        <p>Red</p>
+
+      </div>
+
+      <!-- Dark -->
+      <div
+        class="theme-box"
+        [class.selected]="selectedTheme === 'Dark'"
+        (click)="selectTheme(themes[5])">
+
+        <div class="color-row">
+          <span style="background:#212121"></span>
+          <span style="background:#616161"></span>
+          <span style="background:#424242"></span>
+          <span style="background:#111827"></span>
+        </div>
+
+        <p>Dark</p>
+
+      </div>
+
+    </div>
+
+    <hr>
+
+    <h3>Custom Theme</h3>
+
+    <div class="field">
+      <label>Primary Color</label>
+      <input
+        type="color"
+        [(ngModel)]="toolbarColor">
+    </div>
+
+    <div class="field">
+      <label>Background Color</label>
+      <input
+        type="color"
+        [(ngModel)]="childToolbarColor">
+    </div>
+
+    <div class="field">
+      <label>Accent Color</label>
+      <input
+        type="color"
+        [(ngModel)]="sidebarColor">
+    </div>
+
+    <div class="field">
+      <label>Highlight Color</label>
+      <input
+        type="color"
+        [(ngModel)]="highlightColor">
+    </div>
+
+    <div class="button-group">
+
+      <button
+        class="save-btn"
+        (click)="saveTheme()">
+        Save Theme
+      </button>
+
+      <button
+        class="reset-btn"
+        (click)="resetTheme()">
+        Reset
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

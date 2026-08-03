@@ -1,0 +1,123 @@
+body.dark-theme {
+  background-color: #111827;
+  color: white;
+}
+
+body.dark-theme .content-container {
+  background-color: #1f2937;
+}
+
+body.dark-theme .card,
+body.dark-theme .overview-card,
+body.dark-theme .analytics-box,
+body.dark-theme .revenue-card,
+body.dark-theme .login-card {
+  background-color: #374151;
+  color: white;
+}
+/* DARK MODE */
+body.dark-theme {
+  background: #071126;
+  color: #ffffff;
+}
+
+
+/* Main Layout */
+body.dark-theme .right-section {
+  background: #071126;
+}
+
+body.dark-theme .page-title {
+  background: #1a2332;
+  color: #ffffff;
+  border-bottom: 1px solid #334155;
+}
+
+
+/* Dashboard Text */
+body.dark-theme h1 {
+  color: #ffffff;
+}
+
+body.dark-theme p {
+  color: #cbd5e1;
+}
+
+
+/* Cards */
+body.dark-theme .card,
+body.dark-theme mat-card {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+body.dark-theme .card h2 {
+  color: #4f8cff !important;
+}
+
+body.dark-theme .card p {
+  color: #d1d5db !important;
+}
+
+
+/* Sidebar */
+body.dark-theme .sidebar {
+  background: #111827;
+}
+
+
+/* Toolbar */
+body.dark-theme .top-toolbar {
+  background: #071126 !important;
+  color: white;
+}
+
+/* Main Layout */
+body.dark-theme .right-section {
+  background: #111827;
+}
+
+body.dark-theme .page-title {
+  background: #1f2937;
+  color: white;
+  border-color: #374151;
+}
+
+/* Sidebar */
+body.dark-theme .sidebar {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+body.dark-theme .menu-link {
+  color: #e5e7eb;
+}
+
+body.dark-theme .menu-link mat-icon {
+  color: #d1d5db;
+}
+
+body.dark-theme .menu-link:hover {
+  background: #374151;
+}
+
+/* Dashboard Cards */
+body.dark-theme .card,
+body.dark-theme .stat-box,
+body.dark-theme mat-card {
+  background: #1f2937 !important;
+  color: white;
+}
+
+/* Toolbar */
+body.dark-theme .top-toolbar {
+  background: #111827 !important;
+}
+
+.right-dialog .mat-mdc-dialog-surface {
+  border-radius: 0 !important;
+  padding: 20px;
+  height: 100vh;
+}
