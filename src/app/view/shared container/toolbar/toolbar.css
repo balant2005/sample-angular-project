@@ -1,54 +1,171 @@
+/* =================================
+   TOP TOOLBAR
+================================= */
+
 .top-toolbar {
+
   height: 44px;
-  background: var(--toolbar-color, #3949ab) !important;
+
+  background:
+    var(--toolbar-color, #3949ab) !important;
+
   color: white;
+
   padding: 0 16px;
+
 }
+
+
+/* =================================
+   LOGO
+================================= */
+
 .logo {
+
   font-size: 22px;
+
   font-weight: 600;
+
 }
+
+
+/* =================================
+   SPACER
+================================= */
 
 .spacer {
+
   flex: 1;
+
 }
 
 
+/* =================================
+   PROFILE BUTTON
+================================= */
 
-
-/* Profile */
 .profile-btn {
+
   background: transparent;
+
   border: none;
+
   color: white;
+
   display: flex;
+
   align-items: center;
+
   gap: 10px;
+
   cursor: pointer;
+
 }
+
+
+/* =================================
+   AVATAR
+================================= */
 
 .avatar,
 .profile-circle {
+
   width: 38px;
+
   height: 38px;
+
   border-radius: 50%;
+
   background: white;
+
   color: #3949ab;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   font-weight: 700;
+
 }
+
+
+/* =================================
+   PROFILE MENU
+================================= */
 
 .profile-box {
+
   width: 220px;
+
   text-align: center;
+
   padding: 15px;
+
 }
 
+
 .profile-box h3 {
+
   margin: 10px 0 5px;
+
 }
+
+
+.profile-box p {
+
+  margin: 0;
+
+  color: #777;
+
+  font-size: 13px;
+
+}
+
+
+/* =================================
+   SIDEBAR
+================================= */
+
 .sidebar {
-  background: var(--sidebar-color, white);
+
+  background:
+    var(--sidebar-color, white);
+
+}
+
+
+/* =================================
+   CHATBOT
+================================= */
+
+.chatbot-wrapper {
+
+  position: fixed;
+
+  right: 25px;
+
+  bottom: 25px;
+
+  z-index: 9999;
+
+}
+
+
+/* =================================
+   CHAT ICON HOVER
+================================= */
+
+.top-toolbar button[mat-icon-button] {
+
+  color: white;
+
+}
+
+
+.top-toolbar button[mat-icon-button]:hover {
+
+  background: rgba(255, 255, 255, 0.12);
+
 }

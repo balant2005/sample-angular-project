@@ -53,9 +53,15 @@ export class MainLayout {
         else if (url.includes('settings')) {
           this.pageTitle = 'Settings';
         }
-        else if (url.includes('event-mapper')) {
-          this.pageTitle = 'Event Mapper';
-        }
+            else if (url.includes('event-mapper')) {
+              this.pageTitle = 'Event Mapper';
+            }
+            else if (url.includes('policy')) {
+              this.pageTitle = 'Policy';
+            }
+            else if (url.includes('create')) {
+              this.pageTitle = 'Create Policy Page';
+            }
 
         else {
           this.pageTitle = '';

@@ -1,21 +1,47 @@
 <mat-toolbar class="top-toolbar">
 
+  <!-- Logo -->
+
   <span class="logo">
     BEZOHMINDS
   </span>
 
+
   <span class="spacer"></span>
 
 
-  <button mat-icon-button>
+  <!-- Search -->
+
+  <button
+    mat-icon-button
+    title="Search">
+
     <mat-icon>
       search
     </mat-icon>
+
   </button>
 
 
-  <button 
+  <!-- Chatbot -->
+
+  <button
     mat-icon-button
+    title="Project Assistant"
+    (click)="toggleChat()">
+
+    <mat-icon>
+      smart_toy
+    </mat-icon>
+
+  </button>
+
+
+  <!-- Theme -->
+
+  <button
+    mat-icon-button
+    title="Toggle Theme"
     (click)="toggleTheme()">
 
     <mat-icon>
@@ -25,7 +51,9 @@
   </button>
 
 
-  <button 
+  <!-- Profile -->
+
+  <button
     class="profile-btn"
     [matMenuTriggerFor]="profile">
 
@@ -33,12 +61,23 @@
       {{ initials }}
     </div>
 
-    
-
   </button>
 
 </mat-toolbar>
 
+
+@if (chatOpen) {
+
+  <div class="chatbot-wrapper">
+    <app-chatbot (close)="toggleChat()"></app-chatbot>
+  </div>
+
+}
+
+
+<!-- ==============================
+     PROFILE MENU
+================================ -->
 
 <mat-menu #profile="matMenu">
 
@@ -48,30 +87,49 @@
       {{ initials }}
     </div>
 
+
     <h3>
       {{ userEmail }}
     </h3>
+
 
     <p>
       Administrator
     </p>
 
   </div>
+
+
+  <!-- Theme Settings -->
+
   <button
-  mat-menu-item
-  routerLink="/theme-settings">
+    mat-menu-item
+    routerLink="/theme-settings">
 
-  Theme Settings
+    <mat-icon>
+      palette
+    </mat-icon>
 
-</button>
+    <span>
+      Theme Settings
+    </span>
+
+  </button>
 
 
+  <!-- Logout -->
 
-  <button 
-    mat-menu-item 
+  <button
+    mat-menu-item
     (click)="logout()">
 
-    Logout
+    <mat-icon>
+      logout
+    </mat-icon>
+
+    <span>
+      Logout
+    </span>
 
   </button>
 

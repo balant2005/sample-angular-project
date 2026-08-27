@@ -1,0 +1,43 @@
+<section class="chat-window" aria-label="AI Assistant">
+	<header class="chat-header">
+		<div class="bot-avatar" aria-hidden="true">
+			<mat-icon>smart_toy</mat-icon>
+		</div>
+
+		<div class="chat-title">
+			<strong>Bala</strong>
+			<span>AI Assistant</span>
+		</div>
+
+		<button mat-icon-button type="button" title="Close assistant" (click)="close.emit()">
+			<mat-icon>close</mat-icon>
+		</button>
+	</header>
+
+	<div class="chat-body">
+		@for (item of messages; track $index) {
+			<div class="message-row" [class.user-message]="item.sender === 'user'">
+				@if (item.sender === 'bot') {
+					<div class="small-avatar" aria-hidden="true">
+						<mat-icon>smart_toy</mat-icon>
+					</div>
+				}
+				<p class="message-bubble">{{ item.text }}</p>
+			</div>
+		}
+	</div>
+
+	<form class="chat-input" (ngSubmit)="sendMessage()">
+		
+
+		<input
+			name="message"
+			[(ngModel)]="message"
+			placeholder="Write..."
+			aria-label="Message assistant">
+
+		<button mat-icon-button class="send-button" type="submit" title="Send message">
+			<mat-icon>send</mat-icon>
+		</button>
+	</form>
+</section>

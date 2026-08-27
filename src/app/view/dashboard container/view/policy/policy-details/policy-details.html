@@ -1,0 +1,506 @@
+<div class="details-page">
+
+  <!-- ================================================= -->
+  <!-- TOP BAR -->
+  <!-- ================================================= -->
+
+  <div class="details-header">
+
+    <div>
+
+      <h1>
+        Policy Details
+      </h1>
+
+      <p>
+        View policy configuration
+      </p>
+
+    </div>
+
+
+    <div class="header-buttons">
+
+      <button
+        type="button"
+        class="back-btn"
+        (click)="goBack()"
+      >
+
+        ← Back
+
+      </button>
+
+
+      @if (policy) {
+
+        <button
+          type="button"
+          class="edit-btn"
+          (click)="editPolicy()"
+        >
+
+          ✎ Edit Policy
+
+        </button>
+
+      }
+
+    </div>
+
+  </div>
+
+
+  <!-- ================================================= -->
+  <!-- LOADING -->
+  <!-- ================================================= -->
+
+  @if (loading) {
+
+    <div class="loading-card">
+
+      <div class="loader"></div>
+
+      <p>
+        Loading policy details...
+      </p>
+
+    </div>
+
+  }
+
+
+  <!-- ================================================= -->
+  <!-- ERROR -->
+  <!-- ================================================= -->
+
+  @else if (errorMessage) {
+
+    <div class="error-card">
+
+      <div class="error-icon">
+        !
+      </div>
+
+      <h2>
+        Unable to load policy
+      </h2>
+
+      <p>
+        {{ errorMessage }}
+      </p>
+
+      <button
+        type="button"
+        class="back-btn"
+        (click)="goBack()"
+      >
+
+        Back to Policies
+
+      </button>
+
+    </div>
+
+  }
+
+
+  <!-- ================================================= -->
+  <!-- POLICY DETAILS -->
+  <!-- ================================================= -->
+
+  @else if (policy) {
+
+    <div class="details-card">
+
+
+      <!-- ============================================= -->
+      <!-- BASIC INFORMATION -->
+      <!-- ============================================= -->
+
+      <div class="section">
+
+        <div class="section-title">
+
+          <h2>
+            Basic Information
+          </h2>
+
+        </div>
+
+
+        <div class="details-grid">
+
+
+          <!-- POLICY NAME -->
+
+          <div class="detail-item">
+
+            <label>
+              Policy Name
+            </label>
+
+            <div class="detail-value">
+
+              {{ policy.policyName || '-' }}
+
+            </div>
+
+          </div>
+
+
+          <!-- SOURCE -->
+
+          <div class="detail-item">
+
+            <label>
+              Source Name
+            </label>
+
+            <div class="detail-value">
+
+              {{ policy.sourceName || '-' }}
+
+            </div>
+
+          </div>
+
+
+          <!-- VARIABLE -->
+
+          <div class="detail-item">
+
+            <label>
+              Variable Name
+            </label>
+
+            <div class="detail-value">
+
+              {{ policy.variableName || '-' }}
+
+            </div>
+
+          </div>
+
+
+          <!-- STATUS -->
+
+          <div class="detail-item">
+
+            <label>
+              Status
+            </label>
+
+            <div>
+
+              <span class="status-badge">
+
+                {{ policy.status || 'Active' }}
+
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- CREATED DATE -->
+
+          <div class="detail-item">
+
+            <label>
+              Created Date
+            </label>
+
+            <div class="detail-value">
+
+              {{ policy.createdDate || '-' }}
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <!-- ============================================= -->
+      <!-- ACTIONS -->
+      <!-- ============================================= -->
+
+      <div class="section">
+
+        <div class="section-title">
+
+          <h2>
+            Policy Actions
+          </h2>
+
+          <span class="count-badge">
+
+            {{ policy.actions.length || 0 }}
+
+          </span>
+
+        </div>
+
+
+        @if (
+          policy.actions &&
+          policy.actions.length > 0
+        ) {
+
+          @for (
+            action of policy.actions;
+            track $index;
+            let i = $index
+          ) {
+
+            <div class="action-card">
+
+              <!-- ACTION HEADER -->
+
+              <div class="action-header">
+
+                <div>
+
+                  <span class="action-number">
+
+                    Action {{ i + 1 }}
+
+                  </span>
+
+                  <h3>
+
+                    {{ action.actionName || '-' }}
+
+                  </h3>
+
+                </div>
+
+              </div>
+
+
+              <!-- ===================================== -->
+              <!-- INPUTS -->
+              <!-- ===================================== -->
+
+              @if (
+                action.inputs &&
+                action.inputs.length > 0
+              ) {
+
+                <div class="sub-section">
+
+                  <h4>
+                    Inputs
+                  </h4>
+
+
+                  @for (
+                    input of action.inputs;
+                    track $index
+                  ) {
+
+                    <div class="nested-card">
+
+                      <strong>
+
+                        {{ input.inputName || '-' }}
+
+                      </strong>
+
+
+                      @if (
+                        input.values &&
+                        input.values.length > 0
+                      ) {
+
+                        <div class="key-value-list">
+
+                          @for (
+                            item of input.values;
+                            track $index
+                          ) {
+
+                            <div class="key-value-row">
+
+                              <span>
+                                {{ item.key }}
+                              </span>
+
+                              <span>
+                                {{ item.value }}
+                              </span>
+
+                            </div>
+
+                          }
+
+                        </div>
+
+                      }
+
+                    </div>
+
+                  }
+
+                </div>
+
+              }
+
+
+              <!-- ===================================== -->
+              <!-- CONDITIONS -->
+              <!-- ===================================== -->
+
+              @if (
+                action.conditions &&
+                action.conditions.length > 0
+              ) {
+
+                <div class="sub-section">
+
+                  <h4>
+                    Conditions
+                  </h4>
+
+
+                  @for (
+                    condition of action.conditions;
+                    track $index
+                  ) {
+
+                    <div class="nested-card">
+
+                      <strong>
+
+                        {{ condition.conditionName || '-' }}
+
+                      </strong>
+
+
+                      @if (
+                        condition.values &&
+                        condition.values.length > 0
+                      ) {
+
+                        <div class="key-value-list">
+
+                          @for (
+                            item of condition.values;
+                            track $index
+                          ) {
+
+                            <div class="key-value-row">
+
+                              <span>
+                                {{ item.key }}
+                              </span>
+
+                              <span>
+                                {{ item.value }}
+                              </span>
+
+                            </div>
+
+                          }
+
+                        </div>
+
+                      }
+
+                    </div>
+
+                  }
+
+                </div>
+
+              }
+
+
+              <!-- ===================================== -->
+              <!-- OUTPUT -->
+              <!-- ===================================== -->
+
+              @if (action.output) {
+
+                <div class="sub-section">
+
+                  <h4>
+                    Output
+                  </h4>
+
+
+                  <div class="nested-card">
+
+                    <strong>
+
+                      {{
+                        action.output.outputName || '-'
+                      }}
+
+                    </strong>
+
+
+                    @if (
+                      action.output.values &&
+                      action.output.values.length > 0
+                    ) {
+
+                      <div class="key-value-list">
+
+                        @for (
+                          item of action.output.values;
+                          track $index
+                        ) {
+
+                          <div class="key-value-row">
+
+                            <span>
+                              {{ item.key }}
+                            </span>
+
+                            <span>
+                              {{ item.value }}
+                            </span>
+
+                          </div>
+
+                        }
+
+                      </div>
+
+                    }
+
+                  </div>
+
+                </div>
+
+              }
+
+            </div>
+
+          }
+
+        }
+
+        @else {
+
+          <div class="empty-actions">
+
+            No actions found for this policy.
+
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+  }
+
+</div>

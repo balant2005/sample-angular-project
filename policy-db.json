@@ -1,0 +1,436 @@
+{
+  "policies": [
+    {
+      "policyName": "admin",
+      "sourceName": "login",
+      "variableName": "angular",
+      "sequence": 1,
+      "actions": [
+        {
+          "actionName": "admin",
+          "sequence": 1,
+          "inputs": [
+            {
+              "inputName": "minds",
+              "values": [
+                {
+                  "key": "2",
+                  "value": "2"
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "conditionName": "nill",
+              "values": [
+                {
+                  "key": "nill",
+                  "value": "nill"
+                }
+              ]
+            }
+          ],
+          "output": {
+            "outputName": "lic",
+            "values": [
+              {
+                "key": "2",
+                "value": [
+                  "2",
+                  "3",
+                  "4"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "actionName": "nil3",
+          "sequence": 2,
+          "inputs": [
+            {
+              "inputName": "nil",
+              "values": [
+                {
+                  "key": "nil",
+                  "value": "nil"
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "conditionName": "nil",
+              "values": [
+                {
+                  "key": "nil",
+                  "value": "nil"
+                }
+              ]
+            }
+          ],
+          "output": {
+            "outputName": "nilnil",
+            "values": [
+              {
+                "key": "nil",
+                "value": [
+                  "nil"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "actionName": "nil",
+          "sequence": 3,
+          "inputs": [
+            {
+              "inputName": "nil",
+              "values": [
+                {
+                  "key": "nil",
+                  "value": "nil"
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "conditionName": "nil",
+              "values": [
+                {
+                  "key": "nil",
+                  "value": "nil"
+                }
+              ]
+            }
+          ],
+          "output": {
+            "outputName": "nil",
+            "values": [
+              {
+                "key": "nil",
+                "value": [
+                  "nil"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "description": "Policy workflow configuration",
+      "status": "Active",
+      "createdDate": "13/08/2026",
+      "id": "43oXNavNyWA"
+    },
+    {
+      "policyName": "balan",
+      "sourceName": "ahha",
+      "variableName": "ajah",
+      "sequence": 2,
+      "actions": [
+        {
+          "actionName": "auahbn",
+          "sequence": 1,
+          "inputs": [
+            {
+              "inputName": "ahhab",
+              "values": [
+                {
+                  "key": "uaba",
+                  "value": "ahb"
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "conditionName": "habhba",
+              "values": [
+                {
+                  "key": "ahbba",
+                  "value": "ahba"
+                }
+              ]
+            }
+          ],
+          "output": {
+            "outputName": "hab",
+            "values": [
+              {
+                "key": "ahba",
+                "value": "ahbb"
+              }
+            ]
+          }
+        }
+      ],
+      "description": "Policy workflow configuration",
+      "status": "Active",
+      "createdDate": "10/08/2026",
+      "id": "0WJnfXrlCPg"
+    },
+    {
+      "policyName": "Bezo",
+      "sourceName": "testSource",
+      "variableName": "testVariable",
+      "sequence": 3,
+      "actions": [
+        {
+          "actionName": "actionTest",
+          "sequence": 1,
+          "inputs": [
+            {
+              "inputName": "testInput",
+              "values": [
+                {
+                  "key": "testKey",
+                  "value": "testValue"
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "conditionName": "testCondition ",
+              "values": [
+                {
+                  "key": "testkey",
+                  "value": "testvalue"
+                }
+              ]
+            }
+          ],
+          "output": {
+            "outputName": "testOutput",
+            "values": [
+              {
+                "key": "testkey",
+                "value": [
+                  "testvalue",
+                  "bezo"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "actionName": "action bezo",
+          "sequence": 2,
+          "inputs": [
+            {
+              "inputName": "a",
+              "values": [
+                {
+                  "key": "a",
+                  "value": "a"
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "conditionName": "a",
+              "values": [
+                {
+                  "key": "a",
+                  "value": "a"
+                }
+              ]
+            }
+          ],
+          "output": {
+            "outputName": "a",
+            "values": [
+              {
+                "key": "action bezominds ",
+                "value": [
+                  "html",
+                  "css",
+                  "javascript",
+                  "angular"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "description": "Policy workflow configuration",
+      "status": "Active",
+      "createdDate": "13/08/2026",
+      "id": "WGiy1ejJOWk"
+    },
+    {
+      "policyName": "b",
+      "sourceName": "bb",
+      "variableName": "b",
+      "sequence": 5,
+      "actions": [
+        {
+          "actionName": "b",
+          "sequence": 1,
+          "inputs": [
+            {
+              "inputName": "b",
+              "values": [
+                {
+                  "key": "b",
+                  "value": "b"
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "conditionName": "b",
+              "values": [
+                {
+                  "key": "b",
+                  "value": "b"
+                }
+              ]
+            }
+          ],
+          "output": {
+            "outputName": "b",
+            "values": [
+              {
+                "key": "b",
+                "value": "b"
+              }
+            ]
+          }
+        },
+        {
+          "actionName": "b",
+          "sequence": 2,
+          "inputs": [
+            {
+              "inputName": "bb",
+              "values": [
+                {
+                  "key": "bb",
+                  "value": "b"
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "conditionName": "b",
+              "values": [
+                {
+                  "key": "bb",
+                  "value": "b"
+                }
+              ]
+            }
+          ],
+          "output": {
+            "outputName": "b",
+            "values": [
+              {
+                "key": "b",
+                "value": "b"
+              }
+            ]
+          }
+        }
+      ],
+      "description": "Policy workflow configuration",
+      "status": "Active",
+      "createdDate": "11/08/2026",
+      "id": "yNz3njssC1A"
+    },
+    {
+      "policyName": "c",
+      "sourceName": "c",
+      "variableName": "c",
+      "sequence": 4,
+      "actions": [
+        {
+          "actionName": "c",
+          "sequence": 1,
+          "inputs": [
+            {
+              "inputName": "c",
+              "values": [
+                {
+                  "key": "cc",
+                  "value": "c"
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "conditionName": "c",
+              "values": [
+                {
+                  "key": "c",
+                  "value": "c"
+                }
+              ]
+            }
+          ],
+          "output": {
+            "outputName": "c",
+            "values": [
+              {
+                "key": "c",
+                "value": [
+                  "c",
+                  "sjj"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "actionName": "e",
+          "sequence": 2,
+          "inputs": [
+            {
+              "inputName": "c",
+              "values": [
+                {
+                  "key": "c",
+                  "value": "c"
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "conditionName": "c",
+              "values": [
+                {
+                  "key": "c",
+                  "value": "c"
+                }
+              ]
+            }
+          ],
+          "output": {
+            "outputName": "c",
+            "values": [
+              {
+                "key": "c",
+                "value": [
+                  "c"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "description": "Policy workflow configuration",
+      "status": "Active",
+      "createdDate": "12/08/2026",
+      "id": "t56uz8Gdhz8"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

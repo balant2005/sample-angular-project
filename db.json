@@ -71,6 +71,12 @@
       "role": "owner",
       "status": "Active",
       "id": "8sRuzlSL2AE"
+    },
+    {
+      "name": "suriya",
+      "role": "HR",
+      "status": "Active",
+      "id": "3Fo4l5Nc0To"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

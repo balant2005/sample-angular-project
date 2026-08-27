@@ -1,0 +1,229 @@
+<div class="policy-page">
+
+  <!-- ================================================= -->
+  <!-- TOP BAR -->
+  <!-- ================================================= -->
+
+  <div class="top-bar">
+
+    <div class="page-title">
+
+      <h1>
+        Policy Details
+      </h1>
+
+      <p>
+        Manage and view all your policies
+      </p>
+
+    </div>
+
+
+    <button
+      type="button"
+      class="create-btn"
+      (click)="createPolicy()">
+
+      <span>+</span>
+
+      Create Policy
+
+    </button>
+
+  </div>
+
+
+  <!-- ================================================= -->
+  <!-- POLICY TABLE -->
+  <!-- ================================================= -->
+
+  @if (policies.length > 0) {
+
+    <div class="table-card">
+
+      <div class="table-scroll-container">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>S.No</th>
+
+              <th>Policy Name</th>
+
+              <th>Source Name</th>
+
+              <th>Variable Name</th>
+
+              <th>Actions No</th>
+
+              <th>Status</th>
+
+              <th>Created Date</th>
+
+              <th>Action</th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody>
+
+            @for (
+              policy of policies;
+              track policy.id;
+              let i = $index
+            ) {
+
+              <!-- ======================================= -->
+              <!-- ROW CLICK -->
+              <!-- ======================================= -->
+
+              <tr
+                class="policy-row"
+                (click)="openPolicy(policy)"
+              >
+
+                <!-- S.NO -->
+
+                <td class="serial-number">
+
+                  {{ i + 1 }}
+
+                </td>
+
+
+                <!-- POLICY NAME -->
+
+                <td class="policy-name">
+
+                  {{ policy.policyName }}
+
+                </td>
+
+
+                <!-- SOURCE -->
+
+                <td>
+
+                  {{ policy.sourceName }}
+
+                </td>
+
+
+                <!-- VARIABLE -->
+
+                <td>
+
+                  {{ policy.variableName }}
+
+                </td>
+
+
+                <!-- ACTION COUNT -->
+
+                <td>
+
+                  <span class="action-count">
+
+                    {{ policy.actions.length || 0 }}
+ 
+                  </span>
+
+                </td>
+
+
+                <!-- STATUS -->
+
+                <td>
+
+                  <span class="status-badge">
+
+                    {{ policy.status || 'Active' }}
+
+                  </span>
+
+                </td>
+
+
+                <!-- CREATED DATE -->
+
+                <td>
+
+                  {{ policy.createdDate || '-' }}
+
+                </td>
+
+
+                <!-- DELETE ONLY -->
+
+                <td class="action-buttons">
+
+                  <button
+                    type="button"
+                    class="delete-btn"
+                    (click)="
+                      deletePolicy(
+                        policy.id?.toString(),
+                        $event
+                      )
+                    "
+                  >
+
+                    Delete
+
+                  </button>
+
+                </td>
+
+              </tr>
+
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  }
+
+
+  <!-- ================================================= -->
+  <!-- NO POLICY -->
+  <!-- ================================================= -->
+
+  @else {
+
+    <div class="no-policy-card">
+
+      <div class="no-policy-icon">
+
+        🛡
+
+      </div>
+
+
+      <h2>
+
+        No policies found
+
+      </h2>
+
+
+      <p>
+
+        You haven't created any policies yet.
+
+      </p>
+
+    </div>
+
+  }
+
+</div>

@@ -1,0 +1,1322 @@
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding: 32px 40px 50px;
+  color: #172033;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.page-header {
+  max-width: 1400px;
+  margin: 0 auto 28px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.breadcrumb {
+  color: #7b8497;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.breadcrumb span {
+  margin: 0 8px;
+  color: #b3bac7;
+}
+
+.page-header h1 {
+  margin: 0;
+
+  font-size: 30px;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+.page-header p {
+  margin: 7px 0 0;
+
+  color: #737d90;
+  font-size: 14px;
+}
+
+/* =========================================================
+   HEADER ACTIONS
+   ========================================================= */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.save-btn {
+  border: none;
+  border-radius: 9px;
+
+  background: #2563eb;
+  color: white;
+
+  padding: 11px 18px;
+
+  font-size: 14px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  box-shadow:
+    0 5px 12px rgba(37, 99, 235, 0.18);
+
+  transition: 0.2s;
+}
+
+.save-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.outline-btn {
+  border: 1px solid #d8deea;
+
+  background: white;
+
+  border-radius: 8px;
+
+  padding: 10px 14px;
+
+  color: #2563eb;
+
+  font-size: 13px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.outline-btn:hover {
+  background: #f5f8ff;
+}
+
+/* Create Action - bottom of the actions list */
+
+.bottom-add-btn {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 15px;
+
+  padding: 13px 14px;
+
+  text-align: center;
+
+  border-style: dashed;
+}
+
+/* Delete action */
+
+.delete-btn {
+  border: 0;
+
+  background: #fff1f2;
+
+  color: #e11d48;
+
+  padding: 7px 11px;
+
+  border-radius: 7px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #ffe4e6;
+}
+
+/* =========================================================
+   BOTTOM ACTIONS
+   ========================================================= */
+
+.bottom-actions {
+  max-width: 1400px;
+
+  margin: 25px auto 0;
+
+  display: flex;
+
+  justify-content: flex-end;
+}
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.card {
+  max-width: 1400px;
+
+  margin: 0 auto 25px;
+
+  background: white;
+
+  border: 1px solid #e5e9f1;
+
+  border-radius: 14px;
+
+  padding: 25px;
+
+  box-shadow:
+    0 5px 18px rgba(15, 23, 42, 0.035);
+}
+
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
+
+.section-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+}
+
+.title-icon {
+  width: 39px;
+  height: 39px;
+
+  border-radius: 9px;
+
+  display: grid;
+
+  place-items: center;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  font-size: 16px;
+
+  font-weight: 750;
+}
+
+.action-icon {
+  background: #f5f3ff;
+  color: #7c3aed;
+}
+
+.section-title h2 {
+  margin: 0;
+
+  font-size: 17px;
+
+  font-weight: 700;
+}
+
+.section-title p {
+  margin: 3px 0 0;
+
+  color: #8a93a4;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.form-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+
+  margin-top: 25px;
+}
+
+.form-field.full {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #394255;
+
+  font-size: 12px;
+
+  font-weight: 650;
+}
+
+.form-field label span {
+  color: #ef4444;
+}
+
+input {
+  width: 100%;
+
+  border: 1px solid #dce1ea;
+
+  border-radius: 8px;
+
+  background: white;
+
+  padding: 11px 12px;
+
+  color: #172033;
+
+  outline: none;
+
+  font-size: 13px;
+
+  transition: 0.18s;
+}
+
+input::placeholder {
+  color: #a8afbd;
+}
+
+input:focus {
+  border-color: #6d9dfc;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.section-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 22px;
+}
+
+/* =========================================================
+   ACTION EXPANSION PANEL
+   ========================================================= */
+
+.action-panel {
+  margin-top: 15px;
+
+  border: 1px solid #e1e6ef !important;
+
+  border-radius: 12px !important;
+
+  background: #fcfdff !important;
+
+  box-shadow: none !important;
+
+  overflow: hidden;
+}
+
+/* Action header */
+
+.action-panel
+.mat-expansion-panel-header {
+  min-height: 68px;
+
+  padding: 0 18px;
+}
+
+.action-panel
+.mat-expansion-panel-header.mat-expanded {
+  min-height: 68px;
+}
+
+/* Action title */
+
+.action-panel
+.mat-expansion-panel-header-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 0;
+}
+
+.action-panel
+.mat-expansion-panel-header-description {
+  flex: 0 0 auto;
+
+  align-items: center;
+
+  justify-content: flex-end;
+}
+
+/* =========================================================
+   ACTION NUMBER
+   ========================================================= */
+
+.action-number {
+  width: 32px;
+  height: 32px;
+
+  min-width: 32px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+/* =========================================================
+   ACTION TITLE
+   ========================================================= */
+
+.action-title {
+  font-size: 13px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   ACTION NAME
+   ========================================================= */
+
+.header-action-name {
+  width: 260px;
+
+  height: 38px;
+
+  margin-left: 10px;
+
+  padding: 8px 10px;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   ACTION BODY
+   ========================================================= */
+
+.action-panel
+.mat-expansion-panel-body {
+  padding: 18px !important;
+}
+
+/* =========================================================
+   INPUTS + CONDITIONS
+   ========================================================= */
+
+.side-by-side {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 15px;
+
+  align-items: start;
+}
+
+/* =========================================================
+   INNER EXPANSION PANELS
+   ========================================================= */
+
+.inner-panel {
+  margin-top: 10px;
+
+  border: 1px solid #e1e6ef !important;
+
+  border-radius: 9px !important;
+
+  background: white !important;
+
+  box-shadow: none !important;
+}
+
+.inner-panel
+.mat-expansion-panel-header {
+  min-height: 48px;
+
+  padding: 0 14px;
+}
+
+.inner-panel
+.mat-expansion-panel-header.mat-expanded {
+  min-height: 48px;
+}
+
+.inner-panel
+.mat-expansion-panel-body {
+  padding: 15px !important;
+}
+
+.inner-panel
+.mat-expansion-panel-header-title {
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.inner-panel
+.mat-expansion-panel-header-description {
+  flex: 0 0 auto;
+
+  color: #8a93a4;
+
+  font-size: 11px;
+}
+
+/* =========================================================
+   INPUT / CONDITION ITEM CONTAINER
+   ========================================================= */
+
+.table-row {
+  padding: 12px;
+
+  margin-bottom: 10px;
+
+  border: 1px solid #e2e6ee;
+
+  border-radius: 8px;
+
+  background: #fcfdff;
+}
+
+/* Name field row */
+
+.row-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+.row-header input {
+  flex: 1;
+}
+
+/* Add button */
+
+.add-value-row {
+  display: flex;
+
+  justify-content: flex-end;
+
+  margin-top: 4px;
+}
+
+.add-value-btn {
+  border: 0;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  border-radius: 7px;
+
+  padding: 8px 12px;
+
+  font-size: 11px;
+
+  font-weight: 650;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+.add-value-btn:hover {
+  background: #dbeafe;
+}
+
+/* =========================================================
+   KEY VALUE
+   ========================================================= */
+
+.key-value-container {
+  width: 100%;
+}
+
+.key-value-row {
+  display: grid;
+
+  grid-template-columns:
+    24px
+    1fr
+    1fr
+    30px;
+
+  gap: 7px;
+
+  margin-bottom: 7px;
+
+  align-items: center;
+}
+
+/* =========================================================
+   KEY VALUE DRAG HANDLE
+   ========================================================= */
+
+.value-drag-handle {
+  width: 24px;
+  height: 36px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: grab;
+
+  color: #2563eb;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  user-select: none;
+
+  flex-shrink: 0;
+}
+
+.value-drag-handle:active {
+  cursor: grabbing;
+}
+
+/* =========================================================
+   KEY VALUE DRAG PREVIEW
+   ========================================================= */
+
+.key-value-row.cdk-drag-preview {
+  box-sizing: border-box;
+
+  background: white;
+
+  border: 1px solid #dbe3f0;
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 8px 24px rgba(15, 23, 42, 0.15);
+}
+
+/* =========================================================
+   KEY VALUE DRAG PLACEHOLDER
+   ========================================================= */
+
+.key-value-row.cdk-drag-placeholder {
+  opacity: 0.25;
+}
+
+/* =========================================================
+   KEY VALUE DRAG ANIMATION
+   ========================================================= */
+
+.cdk-drop-list-dragging .key-value-row {
+  transition: transform 180ms ease;
+}
+
+/* =========================================================
+   3-DOT MENU BUTTON
+   ========================================================= */
+
+.menu-btn {
+  width: 30px;
+  height: 38px;
+
+  min-width: 30px;
+
+  border: 1px solid #dbe1ea;
+
+  border-radius: 7px;
+
+  background: #f8fafc;
+
+  color: #5a6478;
+
+  font-size: 16px;
+
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.menu-btn:hover {
+  background: #eff6ff;
+
+  color: #2563eb;
+}
+
+.delete-menu-item {
+  color: #e11d48 !important;
+}
+
+/* =========================================================
+   ADD INPUT / CONDITION
+   ========================================================= */
+
+.small-add {
+  border: 0;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  border-radius: 7px;
+
+  padding: 7px 10px;
+
+  font-size: 11px;
+
+  font-weight: 650;
+
+  cursor: pointer;
+}
+
+.small-add:hover {
+  background: #dbeafe;
+}
+
+/* =========================================================
+   REMOVE INPUT / CONDITION
+   ========================================================= */
+
+.remove-item-btn {
+  border: 0;
+
+  background: transparent;
+
+  color: #e11d48;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  padding: 5px 0;
+
+  cursor: pointer;
+}
+
+.remove-item-btn:hover {
+  color: #be123c;
+
+  text-decoration: underline;
+}
+
+/* =========================================================
+   OUTPUT VALUE — CHIP / TAG INPUT
+   (key stays a plain input; value becomes chips)
+   ========================================================= */
+
+/*
+ * IMPORTANT
+ *
+ * "Key" input auto-height vachi render aagum,
+ * "Value" chip box min-height vachi render aagum.
+ * Rendum almost same-ah irundhalum, font rendering
+ * vachi 1-3px difference varalam.
+ *
+ * Idha completely avoid panna, rendukkum
+ * EXACT SAME fixed height (40px) force pannurom.
+ */
+
+.output-panel .key-value-row > input[type="text"] {
+  height: 40px;
+}
+
+.chip-input-container {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  gap: 6px;
+
+  width: 100%;
+
+  min-height: 40px;
+
+  border: 1px solid #dce1ea;
+
+  border-radius: 8px;
+
+  background: white;
+
+  padding: 6px 8px;
+
+  transition: 0.18s;
+}
+
+.chip-input-container:focus-within {
+  border-color: #6d9dfc;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.chip-input-container.ng-invalid.ng-touched {
+  border-color: #ef4444;
+
+  box-shadow:
+    0 0 0 3px rgba(239, 68, 68, 0.08);
+}
+
+.chip {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 5px 8px 5px 10px;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.chip-remove {
+  border: 0;
+
+  background: transparent;
+
+  color: #2563eb;
+
+  font-size: 14px;
+
+  line-height: 1;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  opacity: 0.7;
+}
+
+.chip-remove:hover {
+  opacity: 1;
+
+  color: #e11d48;
+}
+
+.chip-new-input {
+  flex: 1 1 auto;
+
+  width: auto !important;
+
+  min-width: 90px;
+
+  border: none !important;
+
+  outline: none;
+
+  padding: 4px 2px !important;
+
+  font-size: 13px;
+
+  background: transparent;
+
+  box-shadow: none !important;
+}
+
+.chip-new-input:focus {
+  border: none !important;
+
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   VALIDATION
+   ========================================================= */
+
+input.ng-invalid.ng-touched {
+  border-color: #ef4444;
+
+  box-shadow:
+    0 0 0 3px rgba(239, 68, 68, 0.08);
+}
+
+/* =========================================================
+   SUCCESS TOAST
+   ========================================================= */
+
+.success-toast {
+  position: fixed;
+
+  left: 50%;
+
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  background: #16a34a;
+
+  color: white;
+
+  padding: 16px 26px;
+
+  border-radius: 12px;
+
+  font-size: 15px;
+
+  font-weight: 650;
+
+  box-shadow:
+    0 10px 30px rgba(22, 163, 74, 0.35);
+
+  z-index: 999;
+
+  animation: toast-in 0.25s ease;
+}
+
+.success-tick {
+  width: 24px;
+
+  height: 24px;
+
+  min-width: 24px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.2);
+
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+@keyframes toast-in {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .page {
+    padding: 20px;
+  }
+
+  .page-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .header-actions button {
+    flex: 1;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field.full {
+    grid-column: auto;
+  }
+
+  .header-action-name {
+    width: 180px;
+  }
+
+  .side-by-side {
+    grid-template-columns: 1fr;
+  }
+
+  .output-row {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 28px;
+
+    position: relative;
+  }
+
+  .page-header h1 {
+    margin: 4px 0 4px;
+
+    font-size: 26px;
+
+    font-weight: 700;
+
+    color: #0f172a;
+  }
+
+  .page-header p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+  }
+
+  .breadcrumb {
+    font-size: 12px;
+
+    color: #64748b;
+
+    margin-bottom: 4px;
+  }
+
+  .breadcrumb span {
+    margin: 0 8px;
+
+    color: #94a3b8;
+  }
+
+  /* Back Button */
+
+  .back-btn {
+    height: 42px;
+
+    min-width: 105px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    border-radius: 10px !important;
+
+    background: #ffffff !important;
+
+    color: #2563eb !important;
+
+    border: 1px solid #dbeafe !important;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    box-shadow:
+      0 3px 10px rgba(37, 99, 235, 0.12);
+
+    transition: all 0.2s ease;
+  }
+
+  .back-btn mat-icon {
+    font-size: 20px;
+
+    width: 20px;
+
+    height: 20px;
+  }
+
+  .back-btn:hover {
+    background: #2563eb !important;
+
+    color: #ffffff !important;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 6px 16px rgba(37, 99, 235, 0.25);
+  }
+
+  /* =========================================================
+     ACTION DRAG & SEQUENCE
+     ========================================================= */
+
+  .actions-list {
+    width: 100%;
+  }
+
+  .action-panel {
+    position: relative;
+  }
+
+  .action-panel.cdk-drag-preview {
+    box-sizing: border-box;
+
+    border-radius: 12px;
+
+    box-shadow:
+      0 10px 30px rgba(15, 23, 42, 0.20);
+  }
+
+  .action-panel.cdk-drag-placeholder {
+    opacity: 0.25;
+  }
+
+  .cdk-drop-list-dragging .action-panel {
+    transition: transform 200ms ease;
+  }
+
+  /* =========================================================
+     ACTION DRAG HANDLE
+     ========================================================= */
+
+  .drag-handle {
+    width: 28px;
+
+    height: 32px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: grab;
+
+    color: #2563eb;
+
+    font-size: 23px;
+
+    font-weight: 700;
+
+    user-select: none;
+
+    flex-shrink: 0;
+  }
+
+  .drag-handle:active {
+    cursor: grabbing;
+  }
+
+  /* =========================================================
+     ACTION NUMBER
+     ========================================================= */
+
+  .action-number {
+    width: 32px;
+
+    height: 32px;
+
+    min-width: 32px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    flex-shrink: 0;
+  }
+
+  /* =========================================================
+     ACTION HEADER 
+     ========================================================= */
+
+  .action-panel
+  .mat-expansion-panel-header-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+  }
+
+  .header-action-name {
+    width: 260px !important;
+
+    height: 38px;
+
+    margin-left: 2px;
+
+    padding: 8px 10px;
+
+    font-size: 12px;
+  }
+
+  /* =========================================================
+     DRAG PREVIEW
+     ========================================================= */
+
+  .drag-preview {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px 16px;
+
+    background: #ffffff;
+
+    border: 1px solid #dbe3f0;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    font-weight: 650;
+
+    min-width: 240px;
+  }
+
+  .preview-number {
+    width: 30px;
+
+    height: 30px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 700;
+  }
+
+  /* =========================================================
+     ACTION BODY
+     ========================================================= */
+
+  .action-body {
+    width: 100%;
+  }
+
+  /* =========================================================
+     SAVE BUTTON DISABLED
+     ========================================================= */
+
+  .save-btn:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+  }
+
+  /* =========================================================
+     MOBILE
+     ========================================================= */
+
+  @media (max-width: 700px) {
+
+    .header-action-name {
+      width: 150px !important;
+    }
+
+    .drag-handle {
+      font-size: 20px;
+    }
+
+    .action-number {
+      width: 28px;
+
+      height: 28px;
+
+      min-width: 28px;
+    }
+
+  }
+
+}

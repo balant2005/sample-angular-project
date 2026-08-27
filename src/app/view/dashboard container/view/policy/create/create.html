@@ -1,0 +1,912 @@
+<div class="page" [formGroup]="policyForm">
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <div class="page-header">
+
+    <div>
+
+      <div class="breadcrumb">
+        Policy
+        <span>›</span>
+        {{ isEditMode ? 'Edit Policy' : 'Create Policy' }}
+      </div>
+
+      <h1>
+        {{ isEditMode ? 'Edit Policy' : 'Create Policy' }}
+      </h1>
+
+      <p>
+        {{ isEditMode
+          ? 'Update your policy workflow configuration'
+          : 'Create a new policy workflow configuration'
+        }}
+      </p>
+
+    </div>
+
+    <div class="header-actions">
+
+      <button
+        mat-raised-button
+        class="back-btn"
+        type="button"
+        (click)="goBack()"
+      >
+        <span class="back-icon">←</span>
+        Back
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       POLICY INFORMATION
+       ===================================================== -->
+
+  <section class="card">
+
+    <div class="section-title">
+
+      <div class="title-icon">
+        P
+      </div>
+
+      <div>
+
+        <h2>
+          Policy Information
+        </h2>
+
+        <p>
+          Enter the basic information for this policy
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="form-grid">
+
+      <!-- POLICY NAME -->
+
+      <div class="form-field">
+
+        <label>
+          Policy Name
+          <span>*</span>
+        </label>
+
+        <input
+          type="text"
+          formControlName="policyName"
+          placeholder="Enter policy name"
+        />
+
+      </div>
+
+
+      <!-- SOURCE NAME -->
+
+      <div class="form-field">
+
+        <label>
+          Source Name
+          <span>*</span>
+        </label>
+
+        <input
+          type="text"
+          formControlName="sourceName"
+          placeholder="Enter source name"
+        />
+
+      </div>
+
+
+      <!-- VARIABLE NAME -->
+
+      <div class="form-field full">
+
+        <label>
+          Variable Name
+          <span>*</span>
+        </label>
+
+        <input
+          type="text"
+          formControlName="variableName"
+          placeholder="Enter variable name"
+        />
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       ACTIONS
+       ===================================================== -->
+
+  <section class="card">
+
+    <div class="section-header">
+
+      <div class="section-title">
+
+        <div class="title-icon action-icon">
+          A
+        </div>
+
+        <div>
+
+          <h2>
+            Actions
+          </h2>
+
+          <p>
+            Drag actions to change their execution sequence
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================================
+         ACTION ARRAY
+         =================================================== -->
+
+    <div
+      formArrayName="actions"
+      cdkDropList
+      class="actions-list"
+      (cdkDropListDropped)="dropAction($event)"
+    >
+
+      @for (
+        action of actions.controls;
+        track action;
+        let actionIndex = $index
+      ) {
+
+        <!-- =================================================
+             ACTION PANEL
+             ================================================= -->
+
+        <mat-expansion-panel
+          class="action-panel"
+          [formGroupName]="actionIndex"
+          [expanded]="actionIndex === 0"
+          cdkDrag
+        >
+
+          <!-- DRAG PREVIEW -->
+
+          <div
+            class="drag-preview"
+            *cdkDragPreview
+          >
+
+            <span class="preview-number">
+              {{ actionIndex + 1 }}
+            </span>
+
+            <span>
+              {{ action.get('actionName')?.value || 'Action' }}
+            </span>
+
+          </div>
+
+
+          <!-- =================================================
+               ACTION HEADER
+               ================================================= -->
+
+          <mat-expansion-panel-header>
+
+            <mat-panel-title>
+
+              <!-- DRAG HANDLE -->
+
+              <span
+                class="drag-handle"
+                cdkDragHandle
+                title="Drag to reorder"
+              >
+                ☷
+              </span>
+
+
+              <!-- ACTION NUMBER -->
+
+              <span class="action-number">
+                {{ actionIndex + 1 }}
+              </span>
+
+
+              <!-- ACTION NAME -->
+
+              <input
+                class="header-action-name"
+                type="text"
+                formControlName="actionName"
+                placeholder="Action Name"
+                (click)="$event.stopPropagation()"
+                (keydown)="$event.stopPropagation()"
+              />
+
+            </mat-panel-title>
+
+
+            <!-- DELETE -->
+
+            @if (actions.length > 1) {
+
+              <mat-panel-description>
+
+                <button
+                  type="button"
+                  class="delete-btn"
+                  (click)="$event.stopPropagation(); removeAction(actionIndex)"
+                >
+                  Delete
+                </button>
+
+              </mat-panel-description>
+
+            }
+
+          </mat-expansion-panel-header>
+
+
+          <!-- =================================================
+               ACTION BODY
+               ================================================= -->
+
+          <div class="action-body">
+
+            <!-- =================================================
+                 INPUTS + CONDITIONS
+                 ================================================= -->
+
+            <div class="side-by-side">
+
+
+              <!-- =================================================
+                   INPUTS
+                   ================================================= -->
+
+              <mat-expansion-panel
+                class="inner-panel"
+              >
+
+                <mat-expansion-panel-header>
+
+                  <mat-panel-title>
+                    Inputs
+                  </mat-panel-title>
+
+                  <mat-panel-description>
+                    {{ getInputs(actionIndex).length }}
+                  </mat-panel-description>
+
+                </mat-expansion-panel-header>
+
+
+                <div formArrayName="inputs">
+
+                  @for (
+                    input of getInputs(actionIndex).controls;
+                    track input;
+                    let inputIndex = $index
+                  ) {
+
+                    <div
+                      class="table-row"
+                      [formGroupName]="inputIndex"
+                    >
+
+                      <!-- INPUT NAME -->
+
+                      <div class="row-header">
+
+                        <input
+                          type="text"
+                          formControlName="inputName"
+                          placeholder="Input Name"
+                        />
+
+                      </div>
+
+
+                      <!-- INPUT VALUES -->
+
+                      <div
+                        class="key-value-container"
+                        formArrayName="values"
+                        cdkDropList
+                        (cdkDropListDropped)="dropInputValue(
+                          $event,
+                          actionIndex,
+                          inputIndex
+                        )"
+                      >
+
+                        @for (
+                          value of getInputValues(
+                            actionIndex,
+                            inputIndex
+                          ).controls;
+                          track value;
+                          let valueIndex = $index
+                        ) {
+
+                          <div
+                            class="key-value-row"
+                            [formGroupName]="valueIndex"
+                            cdkDrag
+                          >
+
+                            <!-- KEY-VALUE DRAG HANDLE -->
+
+                            <span
+                              class="value-drag-handle"
+                              cdkDragHandle
+                              title="Drag to reorder"
+                            >
+                              ☷
+                            </span>
+
+
+                            <input
+                              type="text"
+                              formControlName="key"
+                              placeholder="Key"
+                            />
+
+
+                            <input
+                              type="text"
+                              formControlName="value"
+                              placeholder="Value"
+                            />
+
+
+                            <button
+                              type="button"
+                              class="menu-btn"
+                              [matMenuTriggerFor]="inputValueMenu"
+                            >
+                              ⋮
+                            </button>
+
+
+                            <mat-menu #inputValueMenu="matMenu">
+
+                              <button
+                                mat-menu-item
+                                class="delete-menu-item"
+                                type="button"
+                                (click)="removeInputValue(
+                                  actionIndex,
+                                  inputIndex,
+                                  valueIndex
+                                )"
+                              >
+                                Delete
+                              </button>
+
+                            </mat-menu>
+
+                          </div>
+
+                        }
+
+
+                        <!-- ADD VALUE -->
+
+                        <div class="add-value-row">
+
+                          <button
+                            type="button"
+                            class="add-value-btn"
+                            (click)="addInputValue(
+                              actionIndex,
+                              inputIndex
+                            )"
+                          >
+                            + Add
+                          </button>
+
+                        </div>
+
+                      </div>
+
+
+                      <!-- REMOVE INPUT -->
+
+                      <button
+                        type="button"
+                        class="remove-item-btn"
+                        (click)="removeInput(
+                          actionIndex,
+                          inputIndex
+                        )"
+                      >
+                        Remove Input
+                      </button>
+
+                    </div>
+
+                  }
+
+                </div>
+
+
+                <!-- ADD INPUT -->
+
+                <button
+                  type="button"
+                  class="small-add"
+                  (click)="addInput(actionIndex)"
+                >
+                  + Add Input
+                </button>
+
+              </mat-expansion-panel>
+
+
+              <!-- =================================================
+                   CONDITIONS
+                   ================================================= -->
+
+              <mat-expansion-panel
+                class="inner-panel"
+              >
+
+                <mat-expansion-panel-header>
+
+                  <mat-panel-title>
+                    Conditions
+                  </mat-panel-title>
+
+                  <mat-panel-description>
+                    {{ getConditions(actionIndex).length }}
+                  </mat-panel-description>
+
+                </mat-expansion-panel-header>
+
+
+                <div formArrayName="conditions">
+
+                  @for (
+                    condition of getConditions(actionIndex).controls;
+                    track condition;
+                    let conditionIndex = $index
+                  ) {
+
+                    <div
+                      class="table-row"
+                      [formGroupName]="conditionIndex"
+                    >
+
+                      <!-- CONDITION NAME -->
+
+                      <div class="row-header">
+
+                        <input
+                          type="text"
+                          formControlName="conditionName"
+                          placeholder="Condition Name"
+                        />
+
+                      </div>
+
+
+                      <!-- CONDITION VALUES -->
+
+                      <div
+                        class="key-value-container"
+                        formArrayName="values"
+                        cdkDropList
+                        (cdkDropListDropped)="dropConditionValue(
+                          $event,
+                          actionIndex,
+                          conditionIndex
+                        )"
+                      >
+
+                        @for (
+                          value of getConditionValues(
+                            actionIndex,
+                            conditionIndex
+                          ).controls;
+                          track value;
+                          let valueIndex = $index
+                        ) {
+
+                          <div
+                            class="key-value-row"
+                            [formGroupName]="valueIndex"
+                            cdkDrag
+                          >
+
+                            <!-- KEY-VALUE DRAG HANDLE -->
+
+                            <span
+                              class="value-drag-handle"
+                              cdkDragHandle
+                              title="Drag to reorder"
+                            >
+                              ☷
+                            </span>
+
+
+                            <input
+                              type="text"
+                              formControlName="key"
+                              placeholder="Key"
+                            />
+
+
+                            <input
+                              type="text"
+                              formControlName="value"
+                              placeholder="Value"
+                            />
+
+
+                            <button
+                              type="button"
+                              class="menu-btn"
+                              [matMenuTriggerFor]="conditionValueMenu"
+                            >
+                              ⋮
+                            </button>
+
+
+                            <mat-menu #conditionValueMenu="matMenu">
+
+                              <button
+                                mat-menu-item
+                                class="delete-menu-item"
+                                type="button"
+                                (click)="removeConditionValue(
+                                  actionIndex,
+                                  conditionIndex,
+                                  valueIndex
+                                )"
+                              >
+                                Delete
+                              </button>
+
+                            </mat-menu>
+
+                          </div>
+
+                        }
+
+
+                        <!-- ADD VALUE -->
+
+                        <div class="add-value-row">
+
+                          <button
+                            type="button"
+                            class="add-value-btn"
+                            (click)="addConditionValue(
+                              actionIndex,
+                              conditionIndex
+                            )"
+                          >
+                            + Add
+                          </button>
+
+                        </div>
+
+                      </div>
+
+
+                      <!-- REMOVE CONDITION -->
+
+                      <button
+                        type="button"
+                        class="remove-item-btn"
+                        (click)="removeCondition(
+                          actionIndex,
+                          conditionIndex
+                        )"
+                      >
+                        Remove Condition
+                      </button>
+
+                    </div>
+
+                  }
+
+                </div>
+
+
+                <!-- ADD CONDITION -->
+
+                <button
+                  type="button"
+                  class="small-add"
+                  (click)="addCondition(actionIndex)"
+                >
+                  + Add Condition
+                </button>
+
+              </mat-expansion-panel>
+
+            </div>
+
+
+            <!-- =================================================
+                 OUTPUT
+                 ================================================= -->
+
+            <mat-expansion-panel
+              class="inner-panel output-panel"
+            >
+
+              <mat-expansion-panel-header>
+
+                <mat-panel-title>
+                  Output
+                </mat-panel-title>
+
+                <mat-panel-description>
+                  Single
+                </mat-panel-description>
+
+              </mat-expansion-panel-header>
+
+
+              <div
+                class="table-row"
+                formGroupName="output"
+              >
+
+                <!-- OUTPUT NAME -->
+
+                <div class="row-header">
+
+                  <input
+                    type="text"
+                    formControlName="outputName"
+                    placeholder="Output Name"
+                  />
+
+                </div>
+
+
+                <!-- OUTPUT VALUES -->
+
+                <div
+                  class="key-value-container"
+                  formArrayName="values"
+                  cdkDropList
+                  (cdkDropListDropped)="dropOutputValue(
+                    $event,
+                    actionIndex
+                  )"
+                >
+
+                  @for (
+                    value of getOutputValues(actionIndex).controls;
+                    track value;
+                    let valueIndex = $index
+                  ) {
+
+                    <div
+                      class="key-value-row"
+                      [formGroupName]="valueIndex"
+                      cdkDrag
+                    >
+
+                      <!-- KEY-VALUE DRAG HANDLE -->
+
+                      <span
+                        class="value-drag-handle"
+                        cdkDragHandle
+                        title="Drag to reorder"
+                      >
+                        ☷
+                      </span>
+
+
+                      <!-- KEY : unchanged, plain text input -->
+
+                      <input
+                        type="text"
+                        formControlName="key"
+                        placeholder="Key"
+                      />
+
+
+                      <!-- VALUE : chip / tag input -->
+
+                      <div
+                        class="chip-input-container"
+                        formArrayName="value"
+                      >
+
+                        @for (
+                          chip of getOutputChips(
+                            actionIndex,
+                            valueIndex
+                          ).controls;
+                          track chip;
+                          let chipIndex = $index
+                        ) {
+
+                          <span class="chip">
+
+                            {{ chip.value }}
+
+                            <button
+                              type="button"
+                              class="chip-remove"
+                              (click)="removeOutputChip(
+                                actionIndex,
+                                valueIndex,
+                                chipIndex
+                              )"
+                            >
+                              ×
+                            </button>
+
+                          </span>
+
+                        }
+
+                        <input
+                          type="text"
+                          class="chip-new-input"
+                          placeholder="New value..."
+                          #chipInput
+                          (keydown.enter)="
+                            $event.preventDefault();
+                            addOutputChip(actionIndex, valueIndex, chipInput.value);
+                            chipInput.value = ''
+                          "
+                          (blur)="
+                            addOutputChip(actionIndex, valueIndex, chipInput.value);
+                            chipInput.value = ''
+                          "
+                        />
+
+                      </div>
+
+
+                      <button
+                        type="button"
+                        class="menu-btn"
+                        [matMenuTriggerFor]="outputValueMenu"
+                      >
+                        ⋮
+                      </button>
+
+
+                      <mat-menu #outputValueMenu="matMenu">
+
+                        <button
+                          mat-menu-item
+                          class="delete-menu-item"
+                          type="button"
+                          (click)="removeOutputValue(
+                            actionIndex,
+                            valueIndex
+                          )"
+                        >
+                          Delete
+                        </button>
+
+                      </mat-menu>
+
+                    </div>
+
+                  }
+
+
+                  <!-- ADD OUTPUT VALUE -->
+
+                  <div class="add-value-row">
+
+                    <button
+                      type="button"
+                      class="add-value-btn"
+                      (click)="addOutputValue(actionIndex)"
+                    >
+                      + Add
+                    </button>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </mat-expansion-panel>
+
+          </div>
+
+        </mat-expansion-panel>
+
+      }
+
+    </div>
+
+
+    <!-- =====================================================
+         CREATE ACTION
+         ===================================================== -->
+
+    <button
+      class="outline-btn bottom-add-btn"
+      type="button"
+      (click)="addAction()"
+    >
+      + Create Action
+    </button>
+
+  </section>
+
+
+  <!-- =====================================================
+       SAVE / UPDATE
+       ===================================================== -->
+
+  <div class="bottom-actions">
+
+    <button
+      class="save-btn"
+      type="button"
+      [disabled]="saving"
+      (click)="savePolicy()"
+    >
+
+      <span>
+        {{ saving ? '...' : '✓' }}
+      </span>
+
+      {{ isEditMode ? 'Update Policy' : 'Save Policy' }}
+
+    </button>
+
+  </div>
+
+
+  <!-- =====================================================
+       SUCCESS TOAST
+       ===================================================== -->
+
+  @if (saveSuccess()) {
+
+    <div class="success-toast">
+
+      <span class="success-tick">
+        ✓
+      </span>
+
+      {{ isEditMode
+        ? 'Updated Successfully'
+        : 'Saved Successfully'
+      }}
+
+    </div>
+
+  }
+
+</div>

@@ -1,23 +1,31 @@
 import { Component, OnInit, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { Router } from '@angular/router';
+
+import { Router, RouterLink } from '@angular/router';
+
 import { signOut } from 'firebase/auth';
 import { auth } from '../../../firebase';
-import { RouterLink } from '@angular/router';
+import { Chatbot } from './chatbot/chatbot';
+
 @Component({
   selector: 'app-toolbar',
   standalone: true,
+
   imports: [
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    RouterLink
+    Chatbot,
+    RouterLink,
+    
   ],
+
   templateUrl: './toolbar.html',
   styleUrl: './toolbar.css',
 })
@@ -30,49 +38,55 @@ export class Toolbar implements OnInit {
   userEmail = 'User';
   initials = 'US';
 
-  constructor(private router: Router) {}
+  chatOpen = false;
+
+  constructor(
+    private router: Router
+  ) {}
+
 
   ngOnInit(): void {
-    const toolbarColor =
-  localStorage.getItem('toolbarColor');
-
-if(toolbarColor){
-
-  document.documentElement.style
-    .setProperty(
-      '--toolbar-color',
-      toolbarColor
-    );
-
-}
-
-const childToolbarColor =
-  localStorage.getItem('childToolbarColor');
-
-if(childToolbarColor){
-
-  document.documentElement.style
-    .setProperty(
-      '--child-toolbar-color',
-      childToolbarColor
-    );
-
-}
-
-const sidebarColor =
-  localStorage.getItem('sidebarColor');
-
-if(sidebarColor){
-
-  document.documentElement.style
-    .setProperty(
-      '--sidebar-color',
-      sidebarColor
-    );
-
-}
 
     if (isPlatformBrowser(this.platformId)) {
+
+      const toolbarColor =
+        localStorage.getItem('toolbarColor');
+
+      if (toolbarColor) {
+
+        document.documentElement.style.setProperty(
+          '--toolbar-color',
+          toolbarColor
+        );
+
+      }
+
+
+      const childToolbarColor =
+        localStorage.getItem('childToolbarColor');
+
+      if (childToolbarColor) {
+
+        document.documentElement.style.setProperty(
+          '--child-toolbar-color',
+          childToolbarColor
+        );
+
+      }
+
+
+      const sidebarColor =
+        localStorage.getItem('sidebarColor');
+
+      if (sidebarColor) {
+
+        document.documentElement.style.setProperty(
+          '--sidebar-color',
+          sidebarColor
+        );
+
+      }
+
 
       this.userEmail =
         localStorage.getItem('userEmail') || 'User';
@@ -95,6 +109,7 @@ if(sidebarColor){
         document.body.classList.add(
           'dark-theme'
         );
+
       }
 
     }
@@ -102,13 +117,19 @@ if(sidebarColor){
   }
 
 
-  toggleTheme() {
+  toggleChat(): void {
+
+    this.chatOpen = !this.chatOpen;
+
+  }
+
+
+  toggleTheme(): void {
 
     this.darkMode = !this.darkMode;
 
 
     if (isPlatformBrowser(this.platformId)) {
-
 
       if (this.darkMode) {
 
@@ -141,10 +162,10 @@ if(sidebarColor){
 
   logout(): void {
 
-
     if (isPlatformBrowser(this.platformId)) {
 
       localStorage.removeItem('token');
+
       localStorage.removeItem('userEmail');
 
     }
