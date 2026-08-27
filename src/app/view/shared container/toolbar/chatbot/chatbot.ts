@@ -18,7 +18,7 @@ export class Chatbot {
 
   messages = [
     {
-      text: "Hi! I'm Bala, your virtual assistant. How can I help you today?",
+      text: "Hi! I'm Balan, your virtual assistant. How can I help you today?",
       sender: 'bot'
     }
   ];
