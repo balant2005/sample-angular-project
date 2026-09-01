@@ -9,12 +9,16 @@
 			<span>AI Assistant</span>
 		</div>
 
+		<button mat-icon-button type="button" title="New chat" (click)="newChat()">
+			<mat-icon>add_comment</mat-icon>
+		</button>
+
 		<button mat-icon-button type="button" title="Close assistant" (click)="close.emit()">
 			<mat-icon>close</mat-icon>
 		</button>
 	</header>
 
-	<div class="chat-body">
+	<div class="chat-body" #chatBody>
 		@for (item of messages; track $index) {
 			<div class="message-row" [class.user-message]="item.sender === 'user'">
 				@if (item.sender === 'bot') {
@@ -23,6 +27,17 @@
 					</div>
 				}
 				<p class="message-bubble">{{ item.text }}</p>
+			</div>
+		}
+
+		@if (isTyping) {
+			<div class="message-row typing-row">
+				<div class="small-avatar" aria-hidden="true">
+					<mat-icon>smart_toy</mat-icon>
+				</div>
+				<p class="message-bubble typing-indicator" aria-label="Assistant is typing">
+					<span></span><span></span><span></span>
+				</p>
 			</div>
 		}
 	</div>

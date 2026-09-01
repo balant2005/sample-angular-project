@@ -20,4 +20,13 @@ describe('Chatbot', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('shows the response immediately', () => {
+    component.message = 'hello';
+
+    component.sendMessage();
+    expect(component.messages.length).toBe(2);
+    expect(component.isTyping).toBeFalse();
+    expect(component.messages.length).toBe(3);
+  });
 });
