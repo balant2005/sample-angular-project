@@ -33,6 +33,70 @@
   </div>
 
 
+  <div class="filter-area">
+
+    <button
+      type="button"
+      class="calendar-filter-btn"
+      [class.active]="isDateFilterOpen || fromDate || toDate"
+      (click)="toggleDateFilter()"
+      aria-label="Filter policies by created date"
+      title="Filter by created date">
+      <span aria-hidden="true">&#128197;</span>
+      <span>Date filter</span>
+    </button>
+
+    @if (isDateFilterOpen) {
+
+      <div class="filter-panel">
+
+        <strong>Filter by created date</strong>
+
+        <div class="date-fields">
+
+          <label>
+            From
+            <input
+              type="date"
+              [(ngModel)]="draftFromDate">
+          </label>
+
+          <label>
+            To
+            <input
+              type="date"
+              [(ngModel)]="draftToDate">
+          </label>
+
+        </div>
+
+        <div class="filter-actions">
+
+          <button
+            type="button"
+            class="clear-filter-btn"
+            (click)="clearDateFilter()"
+            [disabled]="!draftFromDate && !draftToDate">
+            Clear
+          </button>
+
+          <button
+            type="button"
+            class="done-filter-btn"
+            (click)="applyDateFilter()">
+            <span aria-hidden="true">&#10003;</span>
+            <span class="visually-hidden">Apply date filter</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+
   <!-- ================================================= -->
   <!-- POLICY TABLE -->
   <!-- ================================================= -->
@@ -218,7 +282,9 @@
 
       <p>
 
-        You haven't created any policies yet.
+        {{ allPolicies.length > 0
+          ? 'No policies were created in this date range.'
+          : 'You haven\'t created any policies yet.' }}
 
       </p>
 
