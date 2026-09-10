@@ -9,6 +9,12 @@ import {
 
 import { FormsModule } from '@angular/forms';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+
 import { Router } from '@angular/router';
 
 import {
@@ -17,11 +23,29 @@ import {
 } from '../../../../services/policy.service';
 
 
+interface CalendarDay {
+
+  date: Date;
+
+  day: number;
+
+  isCurrentMonth: boolean;
+
+}
+
+
 @Component({
   selector: 'app-policy',
   standalone: true,
 
-  imports: [FormsModule],
+  imports: [
+    FormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatIconModule
+  ],
 
   templateUrl: './policy.html',
   styleUrl: './policy.css'
@@ -57,7 +81,19 @@ export class Policy implements OnInit {
 
   draftToDate = '';
 
+  draftFromDateValue: Date | null = null;
+
+  draftToDateValue: Date | null = null;
+
   isDateFilterOpen = false;
+
+  calendarMonth = new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    1
+  );
+
+  activePreset = 'Custom Range';
 
 
   // =====================================================
@@ -178,6 +214,10 @@ export class Policy implements OnInit {
 
     this.draftToDate = '';
 
+    this.draftFromDateValue = null;
+
+    this.draftToDateValue = null;
+
     this.policies = [...this.allPolicies];
 
     this.isDateFilterOpen = false;
@@ -194,6 +234,24 @@ export class Policy implements OnInit {
       this.draftFromDate = this.fromDate;
 
       this.draftToDate = this.toDate;
+
+      this.draftFromDateValue = this.fromDate
+        ? this.dateFromInput(this.fromDate)
+        : null;
+
+      this.draftToDateValue = this.toDate
+        ? this.dateFromInput(this.toDate)
+        : null;
+
+      const selectedDate = this.draftFromDateValue || new Date();
+
+      this.calendarMonth = new Date(
+        selectedDate.getFullYear(),
+        selectedDate.getMonth(),
+        1
+      );
+
+      this.activePreset = 'Custom Range';
 
     }
 
@@ -223,13 +281,227 @@ export class Policy implements OnInit {
 
   applyDateFilter(): void {
 
-    this.fromDate = this.draftFromDate;
+    this.fromDate = this.draftFromDateValue
+      ? this.formatDateForFilter(this.draftFromDateValue)
+      : '';
 
-    this.toDate = this.draftToDate;
+    this.toDate = this.draftToDateValue
+      ? this.formatDateForFilter(this.draftToDateValue)
+      : '';
+
+    this.draftFromDate = this.fromDate;
+
+    this.draftToDate = this.toDate;
 
     this.filterPolicies();
 
     this.isDateFilterOpen = false;
+
+  }
+
+
+  cancelDateFilter(): void {
+
+    this.isDateFilterOpen = false;
+
+  }
+
+
+  previousCalendarMonth(): void {
+
+    this.calendarMonth = new Date(
+      this.calendarMonth.getFullYear(),
+      this.calendarMonth.getMonth() - 1,
+      1
+    );
+
+  }
+
+
+  nextCalendarMonth(): void {
+
+    this.calendarMonth = new Date(
+      this.calendarMonth.getFullYear(),
+      this.calendarMonth.getMonth() + 1,
+      1
+    );
+
+  }
+
+
+  getCalendarDays(monthOffset: number): CalendarDay[] {
+
+    const monthStart = new Date(
+      this.calendarMonth.getFullYear(),
+      this.calendarMonth.getMonth() + monthOffset,
+      1
+    );
+
+    const firstDay = new Date(
+      monthStart.getFullYear(),
+      monthStart.getMonth(),
+      1 - monthStart.getDay()
+    );
+
+    return Array.from({ length: 42 }, (_, index) => {
+
+      const date = new Date(
+        firstDay.getFullYear(),
+        firstDay.getMonth(),
+        firstDay.getDate() + index
+      );
+
+      return {
+        date,
+        day: date.getDate(),
+        isCurrentMonth: date.getMonth() === monthStart.getMonth()
+      };
+
+    });
+
+  }
+
+
+  selectCalendarDate(date: Date): void {
+
+    const selectedDate = this.copyDate(date);
+
+    this.activePreset = 'Custom Range';
+
+    if (
+      !this.draftFromDateValue ||
+      this.draftToDateValue ||
+      selectedDate < this.draftFromDateValue
+    ) {
+
+      this.draftFromDateValue = selectedDate;
+
+      this.draftToDateValue = null;
+
+      return;
+
+    }
+
+    this.draftToDateValue = selectedDate;
+
+  }
+
+
+  selectPreset(label: string, months: number): void {
+
+    const endDate = new Date();
+
+    const startDate = new Date();
+
+    startDate.setMonth(
+      startDate.getMonth() - months
+    );
+
+    this.draftFromDateValue = this.copyDate(startDate);
+
+    this.draftToDateValue = this.copyDate(endDate);
+
+    this.activePreset = label;
+
+    this.calendarMonth = new Date(
+      startDate.getFullYear(),
+      startDate.getMonth(),
+      1
+    );
+
+  }
+
+
+  isSelectedDate(date: Date): boolean {
+
+    return this.isSameDate(date, this.draftFromDateValue) ||
+      this.isSameDate(date, this.draftToDateValue);
+
+  }
+
+
+  isDateInRange(date: Date): boolean {
+
+    return !!this.draftFromDateValue &&
+      !!this.draftToDateValue &&
+      date > this.draftFromDateValue &&
+      date < this.draftToDateValue;
+
+  }
+
+
+  isToday(date: Date): boolean {
+
+    return this.isSameDate(date, new Date());
+
+  }
+
+
+  getDateRangeLabel(): string {
+
+    if (!this.draftFromDateValue) {
+
+      return 'Select date range';
+
+    }
+
+    const from = this.formatDisplayDate(this.draftFromDateValue);
+    const to = this.draftToDateValue
+      ? this.formatDisplayDate(this.draftToDateValue)
+      : 'Select end date';
+
+    return `${from} - ${to}`;
+
+  }
+
+
+  getMonthLabel(monthOffset: number): string {
+
+    const date = new Date(
+      this.calendarMonth.getFullYear(),
+      this.calendarMonth.getMonth() + monthOffset,
+      1
+    );
+
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      year: 'numeric'
+    });
+
+  }
+
+
+  private copyDate(date: Date): Date {
+
+    return new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate()
+    );
+
+  }
+
+
+  private isSameDate(
+    firstDate: Date,
+    secondDate: Date | null
+  ): boolean {
+
+    return !!secondDate &&
+      firstDate.getFullYear() === secondDate.getFullYear() &&
+      firstDate.getMonth() === secondDate.getMonth() &&
+      firstDate.getDate() === secondDate.getDate();
+
+  }
+
+
+  private formatDisplayDate(date: Date): string {
+
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    });
 
   }
 
@@ -241,6 +513,32 @@ export class Policy implements OnInit {
       .map(Number);
 
     return this.toDateKey(year, month, day);
+
+  }
+
+
+  private dateFromInput(value: string): Date | null {
+
+    const [year, month, day] = value
+      .split('-')
+      .map(Number);
+
+    const date = new Date(year, month - 1, day);
+
+    return Number.isNaN(date.getTime())
+      ? null
+      : date;
+
+  }
+
+
+  private formatDateForFilter(date: Date): string {
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
 
   }
 

@@ -561,23 +561,27 @@ body.dark-theme .no-policy-card h2 {
 
   align-items: center;
 
-  gap: 7px;
+  width: 40px;
 
-  height: 38px;
+  height: 40px;
 
-  padding: 0 12px;
+  padding: 0;
 
-  border: 1px solid #cbd5e1;
+  border: 0;
 
-  border-radius: 6px;
+  border-radius: 50%;
 
-  background: #fff;
+  background: transparent;
 
   color: #475569;
 
-  font-size: 12px;
+  font-size: 0;
 
   cursor: pointer;
+
+  box-shadow: none;
+
+  transition: color .2s, background-color .2s;
 
 }
 
@@ -593,9 +597,21 @@ body.dark-theme .no-policy-card h2 {
 
 .calendar-filter-btn.active {
 
-  border-color: var(--toolbar-color, #3949ab);
-
   color: var(--toolbar-color, #3949ab);
+
+}
+
+
+.calendar-filter-btn:hover,
+.calendar-filter-btn:focus-visible {
+
+  background: color-mix(
+    in srgb,
+    var(--toolbar-color, #3949ab) 10%,
+    transparent
+  );
+
+  outline: none;
 
 }
 
@@ -835,5 +851,548 @@ body.dark-theme .clear-filter-btn {
   border-color: #4b5563;
 
   color: #f9fafb;
+
+}
+
+
+.date-range-field {
+
+  width: 100%;
+
+}
+
+
+.date-range-field ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+
+  display: none;
+
+}
+
+
+.date-range-field ::ng-deep .mat-mdc-text-field-wrapper {
+
+  background: #fff;
+
+}
+
+
+.date-range-field ::ng-deep .mat-mdc-form-field-infix {
+
+  min-height: 42px;
+
+  padding-top: 9px;
+  padding-bottom: 9px;
+
+}
+
+
+.date-range-field input {
+
+  height: auto;
+
+  min-width: 0;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 0;
+
+  color: inherit;
+
+  font: inherit;
+
+}
+
+
+.date-range-field input:focus {
+
+  outline: none;
+
+  border-color: transparent;
+
+}
+
+
+/* Screenshot-style range picker */
+
+.filter-panel {
+
+  width: min(950px, calc(100vw - 28px));
+
+  padding: 0;
+
+  overflow: hidden;
+
+}
+
+
+.range-picker-body {
+
+  display: flex;
+
+  min-height: 420px;
+
+}
+
+
+.range-presets {
+
+  display: flex;
+
+  flex: 0 0 220px;
+
+  flex-direction: column;
+
+  padding: 18px 0;
+
+  border-right: 1px solid #d9dee5;
+
+}
+
+
+.range-presets button {
+
+  min-height: 52px;
+
+  padding: 0 24px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #12243b;
+
+  font-size: 15px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+}
+
+
+.range-presets button:hover,
+.range-presets button.active {
+
+  background: #0b8dcc;
+
+  color: #fff;
+
+}
+
+
+.range-calendar-area {
+
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 18px 18px 10px;
+
+}
+
+
+.calendar-toolbar {
+
+  display: grid;
+
+  grid-template-columns: 40px 1fr 1fr 40px;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 14px;
+
+  color: #172238;
+
+  font-size: 17px;
+
+  text-align: center;
+
+}
+
+
+.calendar-nav-btn {
+
+  width: 36px;
+
+  height: 36px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #111;
+
+  font-size: 34px;
+
+  line-height: 30px;
+
+  cursor: pointer;
+
+}
+
+
+.calendars {
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+
+}
+
+
+.calendar-weekdays,
+.calendar-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+
+}
+
+
+.calendar-weekdays {
+
+  margin-bottom: 8px;
+
+  color: #172238;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  text-align: center;
+
+}
+
+
+.calendar-day {
+
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 1.45;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #172238;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+}
+
+
+.calendar-day.outside-month {
+
+  color: #a0a8b3;
+
+}
+
+
+.calendar-day.in-range {
+
+  background: #e5f1f7;
+
+}
+
+
+.calendar-day.selected {
+
+  z-index: 1;
+
+  border-radius: 6px;
+
+  background: #347fbd;
+
+  color: #fff;
+
+  font-weight: 700;
+
+}
+
+
+.calendar-day.today:not(.selected) {
+
+  box-shadow: inset 0 0 0 1px #347fbd;
+
+  border-radius: 6px;
+
+}
+
+
+.filter-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  min-height: 72px;
+
+  margin-top: 0;
+
+  padding: 0 16px;
+
+  border-top: 1px solid #d9dee5;
+
+}
+
+
+.selected-range-label {
+
+  margin-right: auto;
+
+  color: #172238;
+
+  font-size: 14px;
+
+}
+
+
+.cancel-filter-btn,
+.apply-filter-btn {
+
+  min-width: 96px;
+
+  height: 40px;
+
+  margin-left: 10px;
+
+  padding: 0 16px;
+
+  border-radius: 5px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+}
+
+
+.cancel-filter-btn {
+
+  border: 1px solid #c6ccd4;
+
+  background: #fff;
+
+  color: #263448;
+
+}
+
+
+.apply-filter-btn {
+
+  border: 1px solid #347fbd;
+
+  background: #347fbd;
+
+  color: #fff;
+
+}
+
+
+@media (max-width: 760px) {
+
+  .filter-panel {
+
+    right: -8px;
+
+  }
+
+  .range-picker-body {
+
+    flex-direction: column;
+
+  }
+
+  .range-presets {
+
+    flex: none;
+
+    border-right: 0;
+    border-bottom: 1px solid #d9dee5;
+
+  }
+
+  .range-presets button {
+
+    min-height: 42px;
+
+  }
+
+  .calendars {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .calendars .calendar-month:nth-child(2) {
+
+    display: none;
+
+  }
+
+  .filter-actions {
+
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px;
+
+  }
+
+  .selected-range-label {
+
+    width: 100%;
+    margin-right: 0;
+
+  }
+
+  .cancel-filter-btn,
+  .apply-filter-btn {
+
+    margin-left: 0;
+
+  }
+
+}
+
+
+body.dark-theme .range-presets button,
+body.dark-theme .calendar-toolbar,
+body.dark-theme .calendar-weekdays,
+body.dark-theme .calendar-day,
+body.dark-theme .selected-range-label {
+
+  color: #f8fafc;
+
+}
+
+
+body.dark-theme .range-presets button:hover,
+body.dark-theme .range-presets button.active {
+
+  color: #fff;
+
+}
+
+
+body.dark-theme .range-presets,
+body.dark-theme .filter-actions {
+
+  border-color: #3b4758;
+
+}
+
+
+body.dark-theme .calendar-day.in-range {
+
+  background: #29475a;
+
+}
+
+
+body.dark-theme .cancel-filter-btn {
+
+  border-color: #526174;
+
+  background: #111827;
+
+  color: #f8fafc;
+
+}
+
+
+.calendar-filter-btn mat-icon {
+
+  width: 20px;
+
+  height: 20px;
+
+  color: var(--toolbar-color, #3949ab);
+
+  font-size: 20px;
+
+  line-height: 20px;
+
+}
+
+
+.filter-panel {
+
+  width: min(760px, calc(100vw - 28px));
+
+}
+
+
+.range-picker-body {
+
+  min-height: 360px;
+
+}
+
+
+.range-presets {
+
+  flex-basis: 160px;
+
+  padding: 10px 0;
+
+}
+
+
+.range-presets button {
+
+  min-height: 42px;
+
+  padding: 0 16px;
+
+  font-size: 13px;
+
+}
+
+
+.range-calendar-area {
+
+  padding: 12px 14px 8px;
+
+}
+
+
+.calendar-toolbar {
+
+  margin-bottom: 8px;
+
+  font-size: 15px;
+
+}
+
+
+.calendar-day {
+
+  font-size: 12px;
+
+}
+
+
+.calendar-weekdays {
+
+  margin-bottom: 4px;
+
+  font-size: 11px;
 
 }

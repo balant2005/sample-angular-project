@@ -42,50 +42,133 @@
       (click)="toggleDateFilter()"
       aria-label="Filter policies by created date"
       title="Filter by created date">
-      <span aria-hidden="true">&#128197;</span>
-      <span>Date filter</span>
+      <mat-icon aria-hidden="true">calendar_month</mat-icon>
     </button>
 
     @if (isDateFilterOpen) {
 
       <div class="filter-panel">
 
-        <strong>Filter by created date</strong>
+        <div class="range-picker-body">
 
-        <div class="date-fields">
+          <aside class="range-presets">
 
-          <label>
-            From
-            <input
-              type="date"
-              [(ngModel)]="draftFromDate">
-          </label>
+            <button
+              type="button"
+              [class.active]="activePreset === 'Last Month'"
+              (click)="selectPreset('Last Month', 1)">
+              Last Month
+            </button>
 
-          <label>
-            To
-            <input
-              type="date"
-              [(ngModel)]="draftToDate">
-          </label>
+            <button
+              type="button"
+              [class.active]="activePreset === 'Last 3 Months'"
+              (click)="selectPreset('Last 3 Months', 3)">
+              Last 3 Months
+            </button>
+
+            <button
+              type="button"
+              [class.active]="activePreset === 'Last 6 Months'"
+              (click)="selectPreset('Last 6 Months', 6)">
+              Last 6 Months
+            </button>
+
+            <button
+              type="button"
+              [class.active]="activePreset === 'Last 12 Months'"
+              (click)="selectPreset('Last 12 Months', 12)">
+              Last 12 Months
+            </button>
+
+            <button
+              type="button"
+              [class.active]="activePreset === 'Custom Range'"
+              (click)="activePreset = 'Custom Range'">
+              Custom Range
+            </button>
+
+          </aside>
+
+          <section class="range-calendar-area">
+
+            <div class="calendar-toolbar">
+
+              <button
+                type="button"
+                class="calendar-nav-btn"
+                (click)="previousCalendarMonth()"
+                aria-label="Previous month">
+                &#8249;
+              </button>
+
+              <strong>{{ getMonthLabel(0) }}</strong>
+
+              <strong>{{ getMonthLabel(1) }}</strong>
+
+              <button
+                type="button"
+                class="calendar-nav-btn"
+                (click)="nextCalendarMonth()"
+                aria-label="Next month">
+                &#8250;
+              </button>
+
+            </div>
+
+            <div class="calendars">
+
+              @for (monthOffset of [0, 1]; track monthOffset) {
+
+                <div class="calendar-month">
+
+                  <div class="calendar-weekdays">
+                    @for (weekday of ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']; track weekday) {
+                      <span>{{ weekday }}</span>
+                    }
+                  </div>
+
+                  <div class="calendar-grid">
+                    @for (calendarDay of getCalendarDays(monthOffset); track calendarDay.date.getTime()) {
+                      <button
+                        type="button"
+                        class="calendar-day"
+                        [class.outside-month]="!calendarDay.isCurrentMonth"
+                        [class.in-range]="isDateInRange(calendarDay.date)"
+                        [class.selected]="isSelectedDate(calendarDay.date)"
+                        [class.today]="isToday(calendarDay.date)"
+                        (click)="selectCalendarDate(calendarDay.date)">
+                        {{ calendarDay.day }}
+                      </button>
+                    }
+                  </div>
+
+                </div>
+
+              }
+
+            </div>
+
+          </section>
 
         </div>
 
         <div class="filter-actions">
 
+          <span class="selected-range-label">{{ getDateRangeLabel() }}</span>
+
           <button
             type="button"
-            class="clear-filter-btn"
-            (click)="clearDateFilter()"
-            [disabled]="!draftFromDate && !draftToDate">
-            Clear
+            class="cancel-filter-btn"
+            (click)="cancelDateFilter()">
+            Cancel
           </button>
 
           <button
             type="button"
-            class="done-filter-btn"
+            class="apply-filter-btn"
             (click)="applyDateFilter()">
-            <span aria-hidden="true">&#10003;</span>
-            <span class="visually-hidden">Apply date filter</span>
+            Apply
           </button>
 
         </div>
