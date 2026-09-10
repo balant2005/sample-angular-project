@@ -412,6 +412,32 @@ export class Policy implements OnInit {
   }
 
 
+  selectDurationPreset(
+    label: string,
+    durationMilliseconds: number
+  ): void {
+
+    const endDate = new Date();
+
+    const startDate = new Date(
+      endDate.getTime() - durationMilliseconds
+    );
+
+    this.draftFromDateValue = startDate;
+
+    this.draftToDateValue = endDate;
+
+    this.activePreset = label;
+
+    this.calendarMonth = new Date(
+      startDate.getFullYear(),
+      startDate.getMonth(),
+      1
+    );
+
+  }
+
+
   isSelectedDate(date: Date): boolean {
 
     return this.isSameDate(date, this.draftFromDateValue) ||
