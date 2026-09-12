@@ -35,6 +35,8 @@
 
   <div class="filter-area">
 
+    <div class="filter-controls">
+
     <button
       type="button"
       class="calendar-filter-btn"
@@ -44,6 +46,25 @@
       title="Filter by created date">
       <mat-icon aria-hidden="true">calendar_month</mat-icon>
     </button>
+
+    @if (fromDate || toDate) {
+
+      <span class="applied-date-range" aria-live="polite">
+        {{ getAppliedDateRangeLabel() }}
+      </span>
+
+    }
+
+    <button
+      type="button"
+      class="retry-btn"
+      (click)="retryPolicies()"
+      aria-label="Clear date filter and reload policies"
+      title="Show all policies">
+      <mat-icon aria-hidden="true">refresh</mat-icon>
+    </button>
+
+    </div>
 
     @if (isDateFilterOpen) {
 

@@ -225,6 +225,15 @@ export class Policy implements OnInit {
   }
 
 
+  retryPolicies(): void {
+
+    this.clearDateFilter();
+
+    this.loadPolicies();
+
+  }
+
+
   toggleDateFilter(): void {
 
     this.isDateFilterOpen = !this.isDateFilterOpen;
@@ -475,6 +484,21 @@ export class Policy implements OnInit {
     const to = this.draftToDateValue
       ? this.formatDisplayDate(this.draftToDateValue)
       : 'Select end date';
+
+    return `${from} - ${to}`;
+
+  }
+
+
+  getAppliedDateRangeLabel(): string {
+
+    const from = this.fromDate
+      ? this.formatDisplayDate(this.dateFromInput(this.fromDate)!)
+      : 'Any date';
+
+    const to = this.toDate
+      ? this.formatDisplayDate(this.dateFromInput(this.toDate)!)
+      : 'Any date';
 
     return `${from} - ${to}`;
 
