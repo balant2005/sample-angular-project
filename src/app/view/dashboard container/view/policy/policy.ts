@@ -102,6 +102,12 @@ export class Policy implements OnInit {
 
   ngOnInit(): void {
 
+    const appliedDateFilter =
+      this.policyService.getAppliedDateFilter();
+
+    this.fromDate = appliedDateFilter.fromDate;
+    this.toDate = appliedDateFilter.toDate;
+
     this.loadPolicies();
 
   }
@@ -210,6 +216,8 @@ export class Policy implements OnInit {
 
     this.toDate = '';
 
+    this.policyService.clearAppliedDateFilter();
+
     this.draftFromDate = '';
 
     this.draftToDate = '';
@@ -301,6 +309,11 @@ export class Policy implements OnInit {
     this.draftFromDate = this.fromDate;
 
     this.draftToDate = this.toDate;
+
+    this.policyService.setAppliedDateFilter(
+      this.fromDate,
+      this.toDate
+    );
 
     this.filterPolicies();
 

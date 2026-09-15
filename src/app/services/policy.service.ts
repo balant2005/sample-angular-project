@@ -26,9 +26,45 @@ export class PolicyService {
 
   private apiUrl = 'http://localhost:3001/policies';
 
+  private appliedFromDate = '';
+
+  private appliedToDate = '';
+
   constructor(
     private http: HttpClient
   ) {}
+
+
+  getAppliedDateFilter(): {
+    fromDate: string;
+    toDate: string;
+  } {
+
+    return {
+      fromDate: this.appliedFromDate,
+      toDate: this.appliedToDate
+    };
+
+  }
+
+
+  setAppliedDateFilter(
+    fromDate: string,
+    toDate: string
+  ): void {
+
+    this.appliedFromDate = fromDate;
+    this.appliedToDate = toDate;
+
+  }
+
+
+  clearAppliedDateFilter(): void {
+
+    this.appliedFromDate = '';
+    this.appliedToDate = '';
+
+  }
 
 
   // =========================================================
